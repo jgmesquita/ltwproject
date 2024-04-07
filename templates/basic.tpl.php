@@ -15,6 +15,7 @@
   <body>
     <header>
       <h1><a href="/">Amazon LTW Shop</a></h1>
+      <h2>Rediscover Treasures: Where Pre-Loved Finds New Love!</h2>
       <?php 
         if ($session->isLoggedIn()) drawLogoutForm($session);
         else drawLoginForm();
