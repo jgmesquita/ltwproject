@@ -16,5 +16,5 @@
 
   drawHeader($session, "Welcome to Hell!!!!!");
   ?>
-  <p> MUAHAHAHAHAH </p>
+  <p> MUAHAHAHAHAH WRONG PASSWORD!!! </p>
   <?php drawFooter();

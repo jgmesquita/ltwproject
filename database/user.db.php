@@ -11,9 +11,8 @@ function register_user(PDO $dbh, string $username, string $password, string $nam
 
 function verify_user(PDO $dbh, string $username, string $password): bool
 {
-  $stmt = $dbh->prepare('SELECT * FROM users WHERE username = ? AND password = ?');
-  $stmt->execute(array($username, sha1($password)));
-
+  $stmt = $dbh->prepare('SELECT * FROM users WHERE username = ? AND pw = ?');
+  $stmt->execute(array($username, $password));
   return $stmt->fetch() !== false;
 }
 
