@@ -14,8 +14,7 @@
 
   $db = get_database_connection();
 
-  $items = Item::getItems($db, 5);
-
-  drawHeader($session, 'Amazon LTW Shop');
-  drawItems($items);
-  drawFooter();
+  drawHeader($session, "Welcome to Hell!!!!!");
+  ?>
+  <p> MUAHAHAHAHAH </p>
+  <?php drawFooter();

@@ -10,4 +10,4 @@ $dbh = get_database_connection();
 
 register_user($dbh, $_POST['username'], $_POST['password'], $_POST['name'], $_POST['email']);
 
-header('Location: login.php');
+header('Location: pages/index.php');

@@ -10,6 +10,6 @@ $dbh = get_database_connection();
 
 if (verify_user($dbh, $_POST['username'], $_POST['password'])) {
   $_SESSION['username'] = $_POST['username'];
-  header('Location: index.php');
-} else  header('Location: login.php');
+  header('Location: pages/index.php');
+} else  header('Location: pages/where.php');
 
