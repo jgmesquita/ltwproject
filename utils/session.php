@@ -17,7 +17,7 @@
       return isset($_SESSION['username']) ? $_SESSION['username'] : null;    
     }
 
-    public function setId(int $id) {
+    public function setId(string $id) {
       $_SESSION['username'] = $id;
     }
   }

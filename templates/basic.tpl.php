@@ -54,13 +54,14 @@
   <form action="/actions/action_login.php" method="post" class="login">
     <input type="username" name="username" placeholder="username">
     <input type="password" name="password" placeholder="password">
-    <a href="/pages/register.php">Register</a>
     <button type="submit">Login</button>
+    <a href="/pages/register.php"> Register</a>
+    <a href="/pages/register.php"> Search</a>
   </form>
 <?php } ?>
 
 <?php function drawRegisterForm() { ?>
-  <form action="/actions/action_register.php" method="post" class="login">
+  <form action="/actions/action_register.php" method="post" class="register">
     <input type="username" name="username" placeholder="username">
     <input type="password" name="password" placeholder="password">
     <input type="text" name="firstName" placeholder="firstName">
@@ -79,5 +80,7 @@
   <form action="/actions/action_logout.php" method="post" class="logout">
     <a href="/pages/profile.php"><?=$session->getId()?></a>
     <button type="submit">Logout</button>
+    <a href="/pages/search.php">Search</a>
+    <a href="/pages/register_item.php">Register Item</a>
   </form>
 <?php } ?>

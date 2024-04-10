@@ -5,6 +5,7 @@
 5. register
 6. register item
 7. buy item (link do objeto)
-8. edit profile
-9. ver items adicionados (estado das vendas)
+8. profile
+9. edit profile
+10. ver items adicionados (estado das vendas)
 to be added...
