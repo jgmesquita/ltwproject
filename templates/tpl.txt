@@ -1,8 +1,0 @@
-1. draw header
-2. draw footer
-3. draw login
-4. draw register
-5. draw logout
-6. draw item
-7. draw buy
-to be added...

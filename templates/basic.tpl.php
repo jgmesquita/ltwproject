@@ -85,3 +85,40 @@
     <a href="/pages/register_item.php">Register Item</a>
   </form>
 <?php } ?>
+
+<?php function drawChangeUsername() { ?>
+  <form action="/actions/action_change_username.php" method="post" class="change_username">
+    <input type=text name="username" placeholder="new username">
+    <button type="submit">Change Username</button>
+  </form>
+<?php } ?>
+
+<?php function drawChangeName() { ?>
+  <form action="/actions/action_change_name.php" method="post" class="change_name">
+    <input type=text name="firstName" placeholder="new firstName">
+    <input type=text name="lastName" placeholder="new lastName">
+    <button type="submit">Change Name</button>
+  </form>
+<?php } ?>
+
+<?php function drawChangeEmail() { ?>
+  <form action="/actions/action_change_email.php" method="post" class="change_name">
+    <input type=text name="email" placeholder="new email">
+    <button type="submit">Change Email</button>
+  </form>
+<?php } ?>
+
+<?php function drawChangePassword() { ?>
+  <form action="/actions/action_change_password.php" method="post" class="change_name">
+    <input type=text name="password" placeholder="new password">
+    <button type="submit">Change Password</button>
+  </form>
+<?php } ?>
+
+<?php function drawOptionsProfile() { ?>
+  <h3>Select which detail you wanna change!</h3>
+  <a href="/pages/change_username.php">Change your username!</a>
+  <a href="/pages/change_name.php">Change your name!</a>
+  <a href="/pages/change_email.php">Change your email!</a>
+  <a href="/pages/change_password.php">Change your password!</a>
+<?php } ?>

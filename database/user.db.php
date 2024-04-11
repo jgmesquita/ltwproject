@@ -50,7 +50,7 @@ function change_email(PDO $dbh, string $username, string $new_email): bool
 function change_password(PDO $dbh, string $username, string $new_password): bool 
 {
   $stmt = $dbh->prepare('UPDATE users SET pw = ? WHERE username = ?');
-  $status = $stmt->execute(array($new_password, $username));
+  $status = $stmt->execute(array(sha1($new_password), $username));
   return $status;
 }
 
