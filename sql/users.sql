@@ -31,6 +31,24 @@ CREATE TABLE items(
     FOREIGN KEY (ownerUser) REFERENCES users(username)
 );
 
+DROP TABLE IF EXISTS sold;
+
+CREATE TABLE sold(
+    id INTEGER,
+    buyer TEXT NOT NULL,
+    PRIMARY KEY (id, buyer),
+    FOREIGN KEY (id) REFERENCES items(id),
+    FOREIGN KEY (buyer) REFERENCES users(username)
+);
+
+DROP TABLE IF EXISTS adminUser;
+
+CREATE TABLE adminUser(
+    username TEXT NOT NULL,
+    PRIMARY KEY (username),
+    FOREIGN KEY (username) REFERENCES users(username)
+);
+
 INSERT INTO users VALUES ('jgmesquita', 'pw', 'Jorge', 'Mesquita', 'adress', 'city', 'country', 'postalCode', 'email', 'phone');
 INSERT INTO items VALUES ('1', 'jgmesquita', 'camisola', 'S', 40, 'brand', 'model', 'new');
 INSERT INTO items VALUES ('2', 'jgmesquita', 'tshirt', 'S', 30, 'brand', 'model', 'new');

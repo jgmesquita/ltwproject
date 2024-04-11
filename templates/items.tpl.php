@@ -9,7 +9,7 @@
         <?php foreach ($items as $item) { ?>
             <article>
                 <h3><?=$item->descriptionItem ?></h3>
-                <img src="https://picsum.photos/200?<?=$item->id?>">
+                <img src="https://picsum.photos/200?<?=$item->id?>"><br>
                 <a href="../pages/index.php?">Link</a>
                 <p id="model"><?=$item->model?></p>
                 <p id="brand"><?=$item->brand?></p>
@@ -18,6 +18,7 @@
         <?php } ?>
     </section>
 <?php } ?>
+
 <?php function drawRegisterItemForm() { ?>
     <form action="/actions/action_register_item.php" method="post" class="register_item">
         <input type="text" name="descriptionItem" placeholder="description">

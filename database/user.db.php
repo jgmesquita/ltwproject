@@ -14,7 +14,8 @@ function register_user(PDO $dbh, string $username, string $password, string $fir
   }
 }
 
-function user_exist(PDO $dbh, string $username): bool {
+function user_exist(PDO $dbh, string $username): bool 
+{
   $stmt = $dbh->prepare('SELECT * FROM users WHERE username = ?');
   $stmt->execute(array($username));
   return $stmt->fetch() !== false;
@@ -24,6 +25,39 @@ function verify_user(PDO $dbh, string $username, string $password): bool
 {
   $stmt = $dbh->prepare('SELECT * FROM users WHERE username = ? AND pw = ?');
   $stmt->execute(array($username, sha1($password)));
+  return $stmt->fetch() !== false;
+}
+
+function change_username(PDO $dbh, string $username, string $new_username): bool 
+{
+  $stmt = $dbh->prepare('UPDATE users SET username = ? WHERE username = ?');
+  $status = $stmt->execute(array($new_username, $username));
+  return $status;
+}
+
+function change_name(PDO $dbh, string $username, string $new_firstName, string $new_lastName): bool 
+{
+  $stmt = $dbh->prepare('UPDATE users SET firstName = ?, lastName = ? WHERE username = ?');
+  $status = $stmt->execute(array($new_firstName, $new_lastName, $username));
+  return $status;
+}
+function change_email(PDO $dbh, string $username, string $new_email): bool 
+{
+  $stmt = $dbh->prepare('UPDATE users SET email = ? WHERE username = ?');
+  $status = $stmt->execute(array($new_email, $username));
+  return $status;
+}
+function change_password(PDO $dbh, string $username, string $new_password): bool 
+{
+  $stmt = $dbh->prepare('UPDATE users SET pw = ? WHERE username = ?');
+  $status = $stmt->execute(array($new_password, $username));
+  return $status;
+}
+
+function check_admin(PDO $dbh, string $username): bool
+{
+  $stmt = $dbh->prepare('SELECT * FROM users WHERE username = ?');
+  $stmt->execute(array($username));
   return $stmt->fetch() !== false;
 }
 
