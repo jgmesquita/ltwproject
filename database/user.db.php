@@ -73,6 +73,26 @@ function register_item(PDO $dbh, string $ownerUser, string $descriptionItem, str
   $stmt->execute(array($id, $ownerUser, $descriptionItem, $sizeItem, $price, $brand, $model, $condtion));
 }
 
+function check_listed_items(PDO $dbh, string $username) : array 
+{
+  $stmt = $dbh->prepare('SELECT * FROM items WHERE ownerUser = ?');
+  $stmt->execute(array($username));
+  $items = [];
+  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    $items[] = new Item(
+      $row['id'],
+      $row['ownerUser'],
+      $row['descriptionItem'],
+      $row['sizeItem'],
+      $row['price'],
+      $row['brand'],
+      $row['model'],
+      $row['condition']
+    );
+  }
+  return $items;
+}
+
 function getItem(PDO $dbh, int $id) : Item {
   $stmt = $dbh->prepare('SELECT * FROM items WHERE id = ?');
   $stmt->execute(array($id));
