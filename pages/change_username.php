@@ -14,7 +14,7 @@
 
   require_once(__DIR__ . '/../templates/user.tpl.php');
 
-  $db = get_database_connection();
+  $dbh = get_database_connection();
 
   drawHeaderNoLogin($session, "Change Username");
   drawChangeUsername();

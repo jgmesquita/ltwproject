@@ -12,10 +12,10 @@
 
   require_once(__DIR__ . '/../templates/items.tpl.php');
 
-  $db = get_database_connection();
+  $dbh = get_database_connection();
 
-  $items = Item::getItems($db, 5);
+  $items = Item::getItems($dbh, 5);
 
   drawHeader($session, 'Amazon LTW Shop');
-  drawItems($items);
+  drawItems($dbh, $items);
   drawFooter();

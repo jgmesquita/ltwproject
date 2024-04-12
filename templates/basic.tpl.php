@@ -12,6 +12,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
+    <script src="/javascript/search.js" defer></script>
   </head>
   <body>
     <header>
@@ -33,6 +34,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
+    <script src="/javascript/search.js" defer></script>
   </head>
   <body>
     <header>
@@ -58,7 +60,7 @@
     <input type="password" name="password" placeholder="password">
     <button type="submit">Login</button>
     <a href="/pages/register.php"> Register</a>
-    <a href="/pages/register.php"> Search</a>
+    <a href="/pages/search.php"> Search</a>
   </form>
 <?php } ?>
 

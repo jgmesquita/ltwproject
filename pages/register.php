@@ -12,7 +12,7 @@
 
   require_once(__DIR__ . '/../templates/items.tpl.php');
 
-  $db = get_database_connection();
+  $dbh = get_database_connection();
 
   drawHeaderNoLogin($session, "Register");
   drawRegisterForm();

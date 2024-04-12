@@ -18,8 +18,8 @@
 
   $dbh = get_database_connection();
 
-  $items = check_listed_items($dbh, $_SESSION['username']);
+  $items = check_wishlist_items($dbh, $_SESSION['username']);
 
-  drawHeader($session, "Listed Items");
+  drawHeader($session, "Wishlist Items");
   drawListItems($dbh, $items);
   drawFooter();
