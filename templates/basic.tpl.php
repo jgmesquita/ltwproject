@@ -92,6 +92,7 @@
     <input type=text name="username" placeholder="new username">
     <button type="submit">Change Username</button>
   </form>
+  <a href="/pages/profile.php">Back</a>
 <?php } ?>
 
 <?php function drawChangeName() { ?>
@@ -100,6 +101,7 @@
     <input type=text name="lastName" placeholder="new lastName">
     <button type="submit">Change Name</button>
   </form>
+  <a href="/pages/profile.php">Back</a>
 <?php } ?>
 
 <?php function drawChangeEmail() { ?>
@@ -107,6 +109,7 @@
     <input type=text name="email" placeholder="new email">
     <button type="submit">Change Email</button>
   </form>
+  <a href="/pages/profile.php">Back</a>
 <?php } ?>
 
 <?php function drawChangePassword() { ?>
@@ -114,6 +117,7 @@
     <input type=text name="password" placeholder="new password">
     <button type="submit">Change Password</button>
   </form>
+  <a href="/pages/profile.php">Back</a>
 <?php } ?>
 
 <?php function drawOptionsProfile() { ?>
@@ -122,4 +126,5 @@
   <a href="/pages/change_name.php">Change your name!</a>
   <a href="/pages/change_email.php">Change your email!</a>
   <a href="/pages/change_password.php">Change your password!</a>
+  <a href="/pages/profile.php">Back</a>
 <?php } ?>

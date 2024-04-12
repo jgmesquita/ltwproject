@@ -22,7 +22,7 @@ CREATE TABLE items(
     id INTEGER,
     ownerUser TEXT NOT NULL,
     descriptionItem TEXT NOT NULL,
-    sizeItem VARCHAR(1),
+    sizeItem TEXT NOT NULL,
     price INTEGER NOT NULL,
     brand TEXT NOT NULL,
     model TEXT NOT NULL,

@@ -92,8 +92,8 @@ function check_listed_items(PDO $dbh, string $username) : array
   }
   return $items;
 }
-
-function getItem(PDO $dbh, int $id) : Item {
+function get_item(PDO $dbh, int $id) : Item 
+{
   $stmt = $dbh->prepare('SELECT * FROM items WHERE id = ?');
   $stmt->execute(array($id));
   $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -108,4 +108,19 @@ function getItem(PDO $dbh, int $id) : Item {
     $row['condition']
   );
   return $item;
+}
+
+function is_sold(PDO $dbh, int $id) : bool 
+{
+  $stmt = $dbh->prepare('SELECT * FROM sold WHERE id = ?');
+  $stmt->execute(array($id));
+  return $stmt->fetch() !== false;
+}
+
+function buyer(PDO $dbh, int $id) : string 
+{
+  $stmt = $dbh->prepare('SELECT * FROM sold WHERE id = ?');
+  $stmt->execute(array($id));
+  $row = $stmt->fetch(PDO::FETCH_ASSOC);
+  return $row['buyer'];
 }
