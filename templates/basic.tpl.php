@@ -2,6 +2,8 @@
   declare(strict_types = 1); 
 
   require_once(__DIR__ . '/../utils/session.php');
+
+  require_once(__DIR__ . '/../database/item.class.php');
 ?>
 
 <?php function drawHeader(Session $session, string $title) { ?>
@@ -86,6 +88,7 @@
     <button type="submit">Logout</button>
     <a href="/pages/search.php">Search</a>
     <a href="/pages/register_item.php">Register Item</a>
+    <a href="/pages/checkout.php">Checkout</a>
   </form>
 <?php } ?>
 

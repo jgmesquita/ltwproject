@@ -48,8 +48,15 @@
         <button type="submit">Remove from Wishlist</button>
     </form>
     <?php } ?>
+    <?php if (!is_checkout_item($dbh, $_SESSION['username'], $item->id)) { ?>
     <form action="/actions/action_buy_item.php" method="post" class="buy">
         <button type="submit">Add to Cart</button>
+    </form>
+    <?php } else { ?>
+        <form action="/actions/action_unbuy_item.php" method="post" class="buy">
+        <button type="submit">Remove from Cart</button>
+    </form>
+    <?php } ?>
     <?php } ?>
     <section id="comments">
         <?php foreach ($comments as $comment) { ?>
@@ -138,4 +145,14 @@
       </tbody>
     </table>
   </section>
+<?php } ?>
+
+<?php function drawCheckout(PDO $dbh, int $total, int $quantity) { ?>
+    <p>Your order has a total of <?= $total?> items and the cost is <?=$quantity?>!</p>
+    <form action="/actions/action_checkout.php" method="post" class="checkout">
+        <button type="submit">Checkout</button>
+    </form>
+    <form action="/actions/action_remove_all_items_checkout.php" method="post" class="remove_checkout">
+        <button type="submit">Remove All Items</button>
+    </form>
 <?php } ?>

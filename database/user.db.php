@@ -116,6 +116,89 @@ function check_wishlist_items(PDO $dbh, string $username) : array
   return $items;
 }
 
+function check_checkout_items(PDO $dbh, string $username) : array 
+{
+  $stmt = $dbh->prepare('SELECT items.* FROM items JOIN buy ON items.id = buy.id WHERE buy.user = ?');
+  $stmt->execute(array($username));
+  $items = [];
+  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    $items[] = new Item(
+      $row['id'],
+      $row['ownerUser'],
+      $row['descriptionItem'],
+      $row['sizeItem'],
+      $row['price'],
+      $row['brand'],
+      $row['model'],
+      $row['condition']
+    );
+  }
+  return $items;
+}
+
+function check_sold_items(PDO $dbh, string $username) : array 
+{
+  $stmt = $dbh->prepare('SELECT items.* FROM items JOIN sold ON items.id = sold.id WHERE sold.user = ?');
+  $stmt->execute(array($username));
+  $items = [];
+  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    $items[] = new Item(
+      $row['id'],
+      $row['ownerUser'],
+      $row['descriptionItem'],
+      $row['sizeItem'],
+      $row['price'],
+      $row['brand'],
+      $row['model'],
+      $row['condition']
+    );
+  }
+  return $items;
+}
+
+function add_sold(PDO $dbh, string $username) : void 
+{
+  $array = check_checkout_items($dbh, $username);
+  foreach ($array as $item) {
+    $stmt = $dbh->prepare('INSERT INTO sold VALUES (?, ?)');
+    $stmt->execute(array($item->id, $username));
+    remove_checkout($dbh, $username, $item->id);
+    remove_wishlist($dbh, $username, $item->id);
+  }
+}
+
+function calculate_checkout_metrics(array $items) : array
+{
+  $quantity = 0;
+  $total = 0;
+  foreach ($items as $item) {
+    $total = $total + $item->price;
+    $quantity = $quantity + 1;
+  }
+  $array['total'] = $total;
+  $array['quantity'] = $quantity;
+  return $array;
+}
+
+function add_checkout(PDO $dbh, string $username, int $id) : void 
+{
+  $stmt = $dbh->prepare('INSERT INTO buy VALUES (?, ?)');
+  $stmt->execute(array($id, $username));
+}
+
+function remove_checkout(PDO $dbh, string $username, int $id) : void 
+{
+  $stmt = $dbh->prepare('DELETE FROM buy WHERE id = ? AND user = ?');
+  $stmt->execute(array($id, $username));
+}
+
+function is_checkout_item(PDO $dbh, string $username, int $id) : bool
+{
+  $stmt = $dbh->prepare('SELECT * FROM buy WHERE id = ? AND user = ?');
+  $stmt->execute(array($id, $username));
+  return $stmt->fetch() !== false;
+}
+
 function add_wishlist(PDO $dbh, string $username, int $id) : void 
 {
   $stmt = $dbh->prepare('INSERT INTO wishlist VALUES (?, ?)');
@@ -201,4 +284,12 @@ function get_items_by_search(PDO $dbh, string $q): array
   $stmt = $dbh->prepare('SELECT * FROM item WHERE descriptionItem LIKE ?');
   $stmt->execute(array("$q%"));
   return $stmt->fetchAll();
+}
+
+function remove_all_items_checkout(PDO $dbh, string $username) : void
+{
+  $array = check_checkout_items($dbh, $username);
+  foreach ($array as $item) {
+    remove_checkout($dbh, $username, $item->id);
+  }
 }

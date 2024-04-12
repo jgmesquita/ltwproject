@@ -31,14 +31,24 @@ CREATE TABLE items(
     FOREIGN KEY (ownerUser) REFERENCES users(username)
 );
 
+DROP TABLE IF EXISTS buy;
+
+CREATE TABLE buy(
+    id INTEGER,
+    user TEXT NOT NULL,
+    PRIMARY KEY (id, user),
+    FOREIGN KEY (id) REFERENCES items(id),
+    FOREIGN KEY (user) REFERENCES users(username)
+);
+
 DROP TABLE IF EXISTS sold;
 
 CREATE TABLE sold(
     id INTEGER,
-    buyer TEXT NOT NULL,
-    PRIMARY KEY (id, buyer),
+    user TEXT NOT NULL,
+    PRIMARY KEY (id, user),
     FOREIGN KEY (id) REFERENCES items(id),
-    FOREIGN KEY (buyer) REFERENCES users(username)
+    FOREIGN KEY (user) REFERENCES users(username)
 );
 
 DROP TABLE IF EXISTS wishlist;

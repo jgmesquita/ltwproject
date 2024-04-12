@@ -14,18 +14,13 @@
 
   require_once(__DIR__ . '/../templates/user.tpl.php');
 
-  require_once(__DIR__ . '/../database/user.db.php');
-
   $dbh = get_database_connection();
 
-  $items = check_checkout_items($dbh, $_SESSION['username']);
-
-  $metrics = calculate_checkout_metrics($items);
-
-  $price = $metrics['total'];
-  $quantity = $metrics['quantity'];
-
-  drawHeader($session, "Checkout");
-  drawListItems($dbh, $items);
-  drawCheckout($dbh, $quantity, $price);
+  drawHeader($session, "Admin");
+  if (is_admin($dbh, $_SESSION['username'])) {
+    echo "You are an admin!";
+  }
+  else {
+    echo "You are not an admin!";
+  }
   drawFooter();
