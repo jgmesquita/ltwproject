@@ -59,9 +59,15 @@ function change_password(PDO $dbh, string $username, string $new_password): bool
 
 function is_admin(PDO $dbh, string $username): bool
 {
-  $stmt = $dbh->prepare('SELECT * FROM users WHERE username = ?');
+  $stmt = $dbh->prepare('SELECT * FROM adminUser WHERE username = ?');
   $stmt->execute(array($username));
   return $stmt->fetch() !== false;
+}
+
+function add_admin(PDO $dbh, string $username): void
+{
+  $stmt = $dbh->prepare('INSERT INTO adminUser VALUES (?)');
+  $stmt->execute(array($username));
 }
 
 function register_item(PDO $dbh, string $ownerUser, string $descriptionItem, string $sizeItem, int $price, string $brand, string $model, string $condtion) : void 
@@ -288,8 +294,59 @@ function get_items_by_search(PDO $dbh, string $q): array
 
 function remove_all_items_checkout(PDO $dbh, string $username) : void
 {
-  $array = check_checkout_items($dbh, $username);
-  foreach ($array as $item) {
+  $items = check_checkout_items($dbh, $username);
+  foreach ($items as $item) {
     remove_checkout($dbh, $username, $item->id);
   }
+}
+
+function get_all_sizes(PDO $dbh) : array 
+{
+  $stmt = $dbh->prepare('SELECT * FROM sizes');
+  $stmt->execute();
+  $sizes = [];
+  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    $sizes[] = $row['sizeText'];
+  }
+  return $sizes;
+}
+
+function get_all_categories(PDO $dbh) : array 
+{
+  $stmt = $dbh->prepare('SELECT * FROM categories');
+  $stmt->execute();
+  $sizes = [];
+  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    $sizes[] = $row['category'];
+  }
+  return $sizes;
+}
+
+function get_all_conditions(PDO $dbh) : array 
+{
+  $stmt = $dbh->prepare('SELECT * FROM conditions');
+  $stmt->execute();
+  $sizes = [];
+  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    $sizes[] = $row['condition'];
+  }
+  return $sizes;
+}
+
+function add_condition(PDO $dbh, string $condition) : void 
+{
+  $stmt = $dbh->prepare('INSERT INTO conditions VALUES (?)');
+  $stmt->execute(array($condition));
+}
+
+function add_size(PDO $dbh, string $size) : void 
+{
+  $stmt = $dbh->prepare('INSERT INTO sizes VALUES (?)');
+  $stmt->execute(array($size));
+}
+
+function add_category(PDO $dbh, string $category) : void 
+{
+  $stmt = $dbh->prepare('INSERT INTO categories VALUES (?)');
+  $stmt->execute(array($category));
 }

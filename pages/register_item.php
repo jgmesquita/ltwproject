@@ -15,5 +15,5 @@
   $dbh = get_database_connection();
 
   drawHeader($session, "Register Item");
-  drawRegisterItemForm();
+  drawRegisterItemForm($dbh);
   drawFooter();

@@ -24,3 +24,38 @@
       <a href="/pages/admin.php">Management</a>
     </span>
 <?php } ?>
+
+<?php function drawAdminOptions() { ?>
+  <a href="/pages/elevate_admin.php">Elevate an user to admin</a>
+  <a href="/pages/add_entities.php">Introduce new entities</a>
+  <a href="/pages/all_transactions.php">Watch all the transactions</a>
+<?php } ?>
+
+<?php function drawElevateAdmin() { ?>
+  <form action="/actions/action_elevate_admin.php" method="post" class="elevate_admin">
+    <input type="text" name="username" placeholder="username">
+    <button type="submit">Elevate user as admin</button>
+  </form>
+<?php } ?>
+
+<?php function drawAddSize() { ?>
+  <form action="/actions/action_add_size.php" method="post" class="add_size">
+    <input type="text" name="size" placeholder="size">
+    <button type="submit">Introduce new size</button>
+  </form>
+<?php } ?>
+
+<?php function drawAddCategory() { ?>
+  <form action="/actions/action_add_category.php" method="post" class="add_category">
+    <input type="text" name="category" placeholder="category">
+    <button type="submit">Introduce new category</button>
+  </form>
+<?php } ?>
+
+<?php function drawAddCondition() { ?>
+  <form action="/actions/action_add_condition.php" method="post" class="add_condition">
+    <input type="text" name="condition" placeholder="condition">
+    <button type="submit">Introduce new condition</button>
+  </form>
+<?php } ?>
+

@@ -4,6 +4,8 @@
   require_once(__DIR__ . '/../utils/session.php');
 
   require_once(__DIR__ . '/../database/item.class.php');
+
+  require_once(__DIR__ . '/../database/user.db.php');
 ?>
 
 <?php function drawHeader(Session $session, string $title) { ?>

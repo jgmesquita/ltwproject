@@ -31,6 +31,27 @@ CREATE TABLE items(
     FOREIGN KEY (ownerUser) REFERENCES users(username)
 );
 
+DROP TABLE IF EXISTS sizes;
+
+CREATE TABLE sizes(
+    sizeText TEXT NOT NULL,
+    PRIMARY KEY (sizeText)
+);
+
+DROP TABLE IF EXISTS categories;
+
+CREATE TABLE categories(
+    category TEXT NOT NULL,
+    PRIMARY KEY (category)
+);
+
+DROP TABLE IF EXISTS conditions;
+
+CREATE TABLE conditions(
+    condition TEXT NOT NULL,
+    PRIMARY KEY (condition)
+);
+
 DROP TABLE IF EXISTS buy;
 
 CREATE TABLE buy(
@@ -106,3 +127,27 @@ INSERT INTO items VALUES (8, 'jgmesquita', 'camisola', 'S', 10, 'brand', 'model'
 INSERT INTO items VALUES (9, 'jgmesquita', 'camisola', 'S', 30, 'brand', 'model', 'new');
 INSERT INTO items VALUES (10, 'jgmesquita', 'camisola', 'S', 40, 'brand', 'model', 'new');
 INSERT INTO comment VALUES(1,1, 'user1', 'What is the price?');
+INSERT INTO sizes VALUES ('S');
+INSERT INTO sizes VALUES ('M');
+INSERT INTO sizes VALUES ('L');
+INSERT INTO sizes VALUES ('XL');
+INSERT INTO categories VALUES ('Roupa - Camisola');
+INSERT INTO categories VALUES ('Roupa - T-Shirt');
+INSERT INTO categories VALUES ('Roupa - Calças');
+INSERT INTO categories VALUES ('Roupa - Vestido');
+INSERT INTO categories VALUES ('Calçado - Botas');
+INSERT INTO categories VALUES ('Calçado - Sapatilhas');
+INSERT INTO categories VALUES ('Calçado - Chinelos');
+INSERT INTO categories VALUES ('Acessório - Brincos');
+INSERT INTO categories VALUES ('Acessório - Colar');
+INSERT INTO categories VALUES ('Acessório - Pulseira');
+INSERT INTO categories VALUES ('Acessório - Chapéu');
+INSERT INTO categories VALUES ('Tecnologia - Computador');
+INSERT INTO categories VALUES ('Tecnologia - Teclado');
+INSERT INTO categories VALUES ('Tecnologia - Rato');
+INSERT INTO categories VALUES ('Outro - Carro');
+INSERT INTO categories VALUES ('Outro - Bicicleta');
+INSERT INTO conditions VALUES ('Pouco Usado');
+INSERT INTO conditions VALUES ('Muito Usado');
+INSERT INTO conditions VALUES ('Com Defeito');
+INSERT INTO conditions VALUES ('Novo');

@@ -105,19 +105,35 @@
     <a href="/pages/profile.php">Back</a>
 <?php } ?>
 
-<?php function drawRegisterItemForm() { ?>
+<?php function drawRegisterItemForm(PDO $dbh) { ?>
     <form action="/actions/action_register_item.php" method="post" class="register_item">
-        <input type="text" name="descriptionItem" placeholder="description">
-        <input type="radio" id="S" name="sizeItem" value="S">
-        <label for="S">S</label>
-        <input type="radio" id="M" name="sizeItem" value="M">
-        <label for="M">M</label>
-        <input type="radio" id="L" name="sizeItem" value="L">
-        <label for="L">L</label>
+        <label for="descriptionItem">Choose a category:</label>
+        <select name="descriptionItem" id="description">
+            <?php $categories = get_all_categories($dbh);
+            foreach ($categories as $category) { ?>
+                <option value="<?=$category?>"><?=$category?></option>
+            <?php } ?> 
+        </select>
+        <label for="sizeItem">Choose a size:</label>
+        <select name="sizeItem" id="sizeItem">
+            <?php $sizes = get_all_sizes($dbh);
+            foreach ($sizes as $size) { ?>
+                <option value="<?=$size?>"><?=$size?></option>
+            <?php } ?> 
+        </select>
+        <label for="price">Price:</label>
         <input type="number" name="price" placeholder="price">
+        <label for="cars">Brand:</label>
         <input type="text" name="brand" placeholder="brand">
+        <label for="cars">Model:</label>
         <input type="text" name="model" placeholder="model">
-        <input type="text" name="condition" placeholder="condition">
+        <label for="cars">Choose a condition:</label>
+        <select name="condition" id="condition">
+            <?php $conditions = get_all_conditions($dbh);
+            foreach ($conditions as $condition) { ?>
+                <option value="<?=$condition?>"><?=$condition?></option>
+            <?php } ?> 
+        </select>
         <button type="submit">Register Item</button>
     </form>
 <?php } ?>

@@ -14,13 +14,6 @@
 
   require_once(__DIR__ . '/../templates/user.tpl.php');
 
-  $dbh = get_database_connection();
+  require_once(__DIR__ . '/../database/user.db.php');
 
-  drawHeader($session, "Admin");
-  if (is_admin($dbh, $_SESSION['username'])) {
-    drawAdminOptions();
-  }
-  else {
-    echo "You are not an admin!";
-  }
-  drawFooter();
+  $dbh = get_database_connection();
