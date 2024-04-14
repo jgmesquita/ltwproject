@@ -6,6 +6,7 @@ require_once('../database/connection.db.php');
 
 require_once('../database/comment.class.php');
 
+require_once('../database/reply.class.php');
 function register_user(PDO $dbh, string $username, string $password, string $firstName, string $lastName, string $address_, string $city, string $country, string $postalCode, string $email, string $phone): void
 {
   if (!user_exist($dbh, $username)) {
@@ -282,7 +283,7 @@ function buyer(PDO $dbh, int $id) : string
   $stmt = $dbh->prepare('SELECT * FROM sold WHERE id = ?');
   $stmt->execute(array($id));
   $row = $stmt->fetch(PDO::FETCH_ASSOC);
-  return $row['buyer'];
+  return $row['user'];
 }
 
 function get_items_by_search(PDO $dbh, string $q): array
@@ -349,4 +350,45 @@ function add_category(PDO $dbh, string $category) : void
 {
   $stmt = $dbh->prepare('INSERT INTO categories VALUES (?)');
   $stmt->execute(array($category));
+}
+
+function get_all_items(PDO $dbh) : array 
+{
+  $stmt = $dbh->prepare('SELECT * FROM items');
+  $stmt->execute();
+  $items = [];
+  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    $items[] = new Item(
+      $row['id'],
+      $row['ownerUser'],
+      $row['descriptionItem'],
+      $row['sizeItem'],
+      $row['price'],
+      $row['brand'],
+      $row['model'],
+      $row['condition']
+    );
+  }
+  return $items;
+}
+
+function get_all_replies(PDO $dbh, int $idComment) : array
+{
+  $stmt = $dbh->prepare('SELECT * FROM reply WHERE idComment = ?');
+  $stmt->execute(array($idComment));
+  $replies = [];
+  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    $replies[] = new Reply(
+      $row['idComment'],
+      $row['user'],
+      $row['texto'],
+    );
+  }
+  return $replies;
+}
+
+function add_reply(PDO $dbh, int $idComment, string $username, string $text) : void 
+{
+  $stmt = $dbh->prepare('INSERT INTO reply VALUES (?, ?, ?)');
+  $stmt->execute(array($idComment, $username, $text));
 }

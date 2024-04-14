@@ -18,6 +18,6 @@
 
   $dbh = get_database_connection();
 
-  drawHeader($session, "Elevate User");
+  drawHeader($session, "Admin - Elevate User");
   drawElevateAdmin();
   drawFooter();

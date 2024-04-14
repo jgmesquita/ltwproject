@@ -6,6 +6,8 @@
   require_once(__DIR__ . '/../database/user.db.php');
 
   require_once(__DIR__ . '/../database/item.class.php');
+
+  require_once(__DIR__ . '/../database/reply.class.php');
 ?>
 
 <?php function drawItems(PDO $dbh, array $items) { ?>
@@ -63,7 +65,17 @@
             <section id="comment">
                 <p id="userComment"><?=$comment->user?> commented:</p>
                 <p id="textComment"><?=$comment->text?></p>
-                <a href="/pages/reply.php">Reply</a>
+                <?php $replies = get_all_replies($dbh, $comment->id);
+                foreach ($replies as $reply) { ?>
+                    <section id="reply">
+                    <p id="userReply"><?=$reply->user?> replied:</p>
+                    <p id="textReply"><?=$reply->text?></p>
+                    </section>
+                <?php } ?>
+                <form action="/actions/action_add_reply.php?id=<?=$comment->id?>" method="get" class="reply">
+                    <input type="text" name="reply" placeholder="reply">
+                    <button type="submit">Reply</button>
+                </form>
             </section>
         <?php } ?>
     </section>

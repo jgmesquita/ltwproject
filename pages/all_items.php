@@ -17,3 +17,9 @@
   require_once(__DIR__ . '/../database/user.db.php');
 
   $dbh = get_database_connection();
+
+  $items = get_all_items($dbh);
+
+  drawHeader($session, "Admin - All Items");
+  drawListItems($dbh, $items);
+  drawFooter();

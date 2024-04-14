@@ -28,7 +28,7 @@
 <?php function drawAdminOptions() { ?>
   <a href="/pages/elevate_admin.php">Elevate an user to admin</a>
   <a href="/pages/add_entities.php">Introduce new entities</a>
-  <a href="/pages/all_transactions.php">Watch all the transactions</a>
+  <a href="/pages/all_items.php">Watch all items</a>
 <?php } ?>
 
 <?php function drawElevateAdmin() { ?>
