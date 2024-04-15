@@ -8,7 +8,7 @@
   require_once(__DIR__ . '/../database/user.db.php');
 ?>
 
-<?php function drawHeader(Session $session, string $title) { ?>
+<?php function drawHeader(Session $session, string $title, PDO $dbh) { ?>
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
@@ -27,6 +27,22 @@
         else drawLoginForm();
       ?>
     </header>
+
+    <div>
+      <h4>Select by Category</h4>
+      <ul>
+        <?php
+          $categories = get_all_categories($dbh);
+          foreach($categories as $category){
+            ?>
+            <li>
+              <?= $category ?>
+            </li>
+          <?php } ?>    
+      </ul>
+
+    </div>
+
     <main>
 <?php } ?>
 
