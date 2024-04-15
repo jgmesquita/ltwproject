@@ -72,7 +72,8 @@
                     <p id="textReply"><?=$reply->text?></p>
                     </section>
                 <?php } ?>
-                <form action="/actions/action_add_reply.php?id=<?=$comment->id?>" method="get" class="reply">
+                <form action="/actions/action_add_reply.php" method="post" class="reply">
+                    <input type="hidden" name="id" value = <?=$comment->id?>>
                     <input type="text" name="reply" placeholder="reply">
                     <button type="submit">Reply</button>
                 </form>

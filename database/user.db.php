@@ -288,7 +288,7 @@ function buyer(PDO $dbh, int $id) : string
 
 function get_items_by_search(PDO $dbh, string $q): array
 {
-  $stmt = $dbh->prepare('SELECT * FROM item WHERE descriptionItem LIKE ?');
+  $stmt = $dbh->prepare('SELECT * FROM items WHERE descriptionItem LIKE ?');
   $stmt->execute(array("$q%"));
   return $stmt->fetchAll();
 }
