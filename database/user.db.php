@@ -372,6 +372,26 @@ function get_all_items(PDO $dbh) : array
   return $items;
 }
 
+function get_items_by_category(PDO $dbh, String $Category ):array
+{
+  $stmt = $dbh->prepare('SELECT * FROM items WHERE category =?');
+  $stmt->execute(array($Category));
+  $items = [];
+  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    $items[] = new Item(
+      $row['id'],
+      $row['ownerUser'],
+      $row['descriptionItem'],
+      $row['sizeItem'],
+      $row['price'],
+      $row['brand'],
+      $row['model'],
+      $row['condition']
+    );
+  }
+  return $items;
+}
+
 function get_all_replies(PDO $dbh, int $idComment) : array
 {
   $stmt = $dbh->prepare('SELECT * FROM reply WHERE idComment = ?');

@@ -34,9 +34,12 @@
         <?php
           $categories = get_all_categories($dbh);
           foreach($categories as $category){
+            $parts = explode('-', $category);
             ?>
             <li>
-              <?= $category ?>
+            <a href="side_bar.php?category=<?= urlencode($category) ?>">
+              <?= $parts[1] ?>
+              </a>
             </li>
           <?php } ?>    
       </ul>
@@ -150,4 +153,28 @@
   <a href="/pages/change_email.php">Change your email!</a>
   <a href="/pages/change_password.php">Change your password!</a>
   <a href="/pages/profile.php">Back</a>
+<?php } ?>
+
+
+
+
+<?php function drawItemsByCategory(PDO $dbh, String $category) { ?>
+<!DOCTYPE html>
+<html lang = "en-US">
+    <head>
+        <title><?=$title?></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/style.css">
+        <script src="/javascript/search.js" defer></script>
+    </head>
+    <body> 
+        <h4>
+            <?php
+            $items = get_items_by_category($dbh, $category);
+            drawItems($dbh, $items);
+            ?>
+        </h4>
+    </body>
+
 <?php } ?>
