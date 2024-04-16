@@ -21,5 +21,5 @@
   $items = check_listed_items($dbh, $_SESSION['username']);
 
   drawHeader($session, "Listed Items");
-  drawListItems($dbh, $items);
+  drawListedItems($dbh, $items);
   drawFooter();

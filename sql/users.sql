@@ -27,6 +27,7 @@ CREATE TABLE items(
     brand TEXT NOT NULL,
     model TEXT NOT NULL,
     condition TEXT NOT NULL,
+    imagePath TEXT NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (ownerUser) REFERENCES users(username)
 );

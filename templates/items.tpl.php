@@ -118,6 +118,50 @@
     <a href="/pages/profile.php">Back</a>
 <?php } ?>
 
+<?php function drawListedItems(PDO $dbh, array $items) { ?>
+    <section id="items">
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Description</th>
+                <th>Size</th>
+                <th>Price</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Condition</th>
+                <th>Status</th>
+                <th>Shipping Form</th>
+            </tr>
+        <?php foreach ($items as $item) { ?>
+            <tr>
+                <th><a href="/pages/item.php?id=<?=$item->id?>"><?=$item->id?></a></th>
+                <th><?=$item->descriptionItem?></th>
+                <th><?=$item->sizeItem?></th>
+                <th><?=$item->price?></th>
+                <th><?=$item->brand?></th>
+                <th><?=$item->model?></th>
+                <th><?=$item->condition?></th>
+                <th><?php if (is_sold($dbh, $item->id)) {
+                    echo "Bought by " . buyer($dbh, $item->id) . "</th>";?>
+                    <?="<th>"?>
+                    <form action="/actions/action_generate_file.php" method="post" class="generate">
+                        <input type="hidden" name="seller" value="<?=$_SESSION['username']?>">
+                        <input type="hidden" name="buyer" value="<?=buyer($dbh, $item->id)?>">
+                        <button type="submit">Generate</button>
+                    </form>
+                    <?="</th>"?>
+                <?php } 
+                else {
+                    echo "Listed" . "</th>";
+                    echo "<th></th>";
+                }?>
+            </tr>            
+        <?php } ?>
+        </table>
+    </section>
+    <a href="/pages/profile.php">Back</a>
+<?php } ?>
+
 <?php function drawRegisterItemForm(PDO $dbh) { ?>
     <form action="/actions/action_register_item.php" method="post" class="register_item">
         <label for="descriptionItem">Choose a category:</label>

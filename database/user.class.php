@@ -2,7 +2,7 @@
   declare(strict_types = 1);
 
   class User {
-    public int $id;
+    public string $id;
     public string $firstName;
     public string $lastName;
     public string $address;
@@ -12,7 +12,7 @@
     public string $email;
     public string $phone;
 
-    public function __construct(int $id, string $firstName, string $lastName, string $address, string $city, string $country, string $postalcode, string $email, string $phone)
+    public function __construct(string $id, string $firstName, string $lastName, string $address, string $city, string $country, string $postalcode, string $email, string $phone)
     {
       $this->id = $id;
       $this->firstName = $firstName;

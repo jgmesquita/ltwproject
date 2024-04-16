@@ -392,3 +392,50 @@ function add_reply(PDO $dbh, int $idComment, string $username, string $text) : v
   $stmt = $dbh->prepare('INSERT INTO reply VALUES (?, ?, ?)');
   $stmt->execute(array($idComment, $username, $text));
 }
+
+function get_user(PDO $dbh, string $username) : User
+{
+  $stmt = $dbh->prepare("SELECT * FROM users WHERE username = ?");
+  $stmt->execute(array($username));
+  $row = $stmt->fetch(PDO::FETCH_ASSOC);
+  $user = new User(
+    $row['username'],
+    $row['firstName'],
+    $row['lastName'],
+    $row['address_'],
+    $row['city'],
+    $row['country'],
+    $row['postalCode'],
+    $row['email'],
+    $row['phone']
+  );
+  return $user;
+}
+
+function generate_file(PDO $dbh, string $seller, string $buyer) : void 
+{
+  $file = fopen("temp.txt", "w");
+  $user_seller = get_user($dbh, $seller);
+  $user_buyer = get_user($dbh, $buyer);
+  $txt = 'Shipping Form\n';
+  fwrite($file, $txt);
+  $txt = 'Shipper Information\n';
+  fwrite($file, $txt);
+  $txt = 'Name: ' . $user_seller->firstName . ' ' . $user_seller->lastName . '\n';
+  $txt .= 'Address: ' . $user_seller->address . '\n';
+  $txt .= 'City: ' . $user_seller->city . '\n';
+  $txt .= 'Country: ' . $user_seller->country . '\n';
+  $txt .= 'Postal Code: ' . $user_seller->postalcode . '\n';
+  $txt .= 'Phone: ' . $user_seller->phone . '\n';
+  fwrite($file, $txt);
+  $txt = 'Recipient Information\n';
+  fwrite($file, $txt);
+  $txt = 'Name: ' . $user_buyer->firstName . ' ' . $user_buyer->lastName . '\n';
+  $txt .= 'Address: ' . $user_buyer->address . '\n';
+  $txt .= 'City: ' . $user_buyer->city . '\n';
+  $txt .= 'Country: ' . $user_buyer->country . '\n';
+  $txt .= 'Postal Code: ' . $user_buyer->postalcode . '\n';
+  $txt .= 'Phone: ' . $user_buyer->phone . '\n';
+  fwrite($file, $txt);
+  fclose($file);
+}
