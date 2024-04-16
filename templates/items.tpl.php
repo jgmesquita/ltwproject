@@ -131,6 +131,7 @@
                 <th>Condition</th>
                 <th>Status</th>
                 <th>Shipping Form</th>
+                <th>Update</th>
             </tr>
         <?php foreach ($items as $item) { ?>
             <tr>
@@ -155,6 +156,7 @@
                     echo "Listed" . "</th>";
                     echo "<th></th>";
                 }?>
+                <th><a href="/pages/update_item.php?id=<?=$item->id?>">Update</a></th>
             </tr>            
         <?php } ?>
         </table>
@@ -180,11 +182,11 @@
         </select>
         <label for="price">Price:</label>
         <input type="number" name="price" placeholder="price">
-        <label for="cars">Brand:</label>
+        <label for="brand">Brand:</label>
         <input type="text" name="brand" placeholder="brand">
-        <label for="cars">Model:</label>
+        <label for="model">Model:</label>
         <input type="text" name="model" placeholder="model">
-        <label for="cars">Choose a condition:</label>
+        <label for="condition">Choose a condition:</label>
         <select name="condition" id="condition">
             <?php $conditions = get_all_conditions($dbh);
             foreach ($conditions as $condition) { ?>
@@ -192,6 +194,40 @@
             <?php } ?> 
         </select>
         <button type="submit">Register Item</button>
+    </form>
+<?php } ?>
+
+<?php function drawUpdateItemForm(PDO $dbh, int $id) { ?>
+    <form action="/actions/action_update_item.php" method="post" class="update_item">
+        <input type="hidden" name="id" value = <?=$id?>>
+        <label for="descriptionItem">Choose a category:</label>
+        <select name="descriptionItem" id="description">
+            <?php $categories = get_all_categories($dbh);
+            foreach ($categories as $category) { ?>
+                <option value="<?=$category?>"><?=$category?></option>
+            <?php } ?> 
+        </select>
+        <label for="sizeItem">Choose a size:</label>
+        <select name="sizeItem" id="sizeItem">
+            <?php $sizes = get_all_sizes($dbh);
+            foreach ($sizes as $size) { ?>
+                <option value="<?=$size?>"><?=$size?></option>
+            <?php } ?> 
+        </select>
+        <label for="price">Price:</label>
+        <input type="number" name="price" placeholder="price">
+        <label for="brand">Brand:</label>
+        <input type="text" name="brand" placeholder="brand">
+        <label for="model">Model:</label>
+        <input type="text" name="model" placeholder="model">
+        <label for="condition">Choose a condition:</label>
+        <select name="condition" id="condition">
+            <?php $conditions = get_all_conditions($dbh);
+            foreach ($conditions as $condition) { ?>
+                <option value="<?=$condition?>"><?=$condition?></option>
+            <?php } ?> 
+        </select>
+        <button type="submit">Update Item</button>
     </form>
 <?php } ?>
 

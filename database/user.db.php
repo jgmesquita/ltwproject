@@ -417,25 +417,31 @@ function generate_file(PDO $dbh, string $seller, string $buyer) : void
   $file = fopen("temp.txt", "w");
   $user_seller = get_user($dbh, $seller);
   $user_buyer = get_user($dbh, $buyer);
-  $txt = 'Shipping Form\n';
+  $txt = "Shipping Form\n";
   fwrite($file, $txt);
-  $txt = 'Shipper Information\n';
+  $txt = "Shipper Information\n";
   fwrite($file, $txt);
-  $txt = 'Name: ' . $user_seller->firstName . ' ' . $user_seller->lastName . '\n';
-  $txt .= 'Address: ' . $user_seller->address . '\n';
-  $txt .= 'City: ' . $user_seller->city . '\n';
-  $txt .= 'Country: ' . $user_seller->country . '\n';
-  $txt .= 'Postal Code: ' . $user_seller->postalcode . '\n';
-  $txt .= 'Phone: ' . $user_seller->phone . '\n';
+  $txt = "Name: " . $user_seller->firstName . " " . $user_seller->lastName . "\n";
+  $txt .= "Address: " . $user_seller->address . "\n";
+  $txt .= "City: " . $user_seller->city . "\n";
+  $txt .= "Country: " . $user_seller->country . "\n";
+  $txt .= "Postal Code: " . $user_seller->postalcode . "\n";
+  $txt .= "Phone: " . $user_seller->phone . "\n";
   fwrite($file, $txt);
-  $txt = 'Recipient Information\n';
+  $txt = "Recipient Information";
   fwrite($file, $txt);
-  $txt = 'Name: ' . $user_buyer->firstName . ' ' . $user_buyer->lastName . '\n';
-  $txt .= 'Address: ' . $user_buyer->address . '\n';
-  $txt .= 'City: ' . $user_buyer->city . '\n';
-  $txt .= 'Country: ' . $user_buyer->country . '\n';
-  $txt .= 'Postal Code: ' . $user_buyer->postalcode . '\n';
-  $txt .= 'Phone: ' . $user_buyer->phone . '\n';
+  $txt = "Name: " . $user_buyer->firstName . " " . $user_buyer->lastName . "\n";
+  $txt .= "Address: " . $user_buyer->address . "\n";
+  $txt .= "City: " . $user_buyer->city . "\n";
+  $txt .= "Country: " . $user_buyer->country . "\n";
+  $txt .= "Postal Code: " . $user_buyer->postalcode . "\n";
+  $txt .= "Phone: " . $user_buyer->phone . "\n";
   fwrite($file, $txt);
   fclose($file);
+}
+
+function update_item(PDO $dbh, int $id, string $descriptionItem, string $size, int $price, string $brand, string $model, string $condition) : void 
+{
+  $stmt = $dbh->prepare('UPDATE items SET descriptionItem = ?, sizeItem = ?, price = ?, brand = ?, model = ?, condition = ? WHERE id = ?');
+  $stmt->execute(array($descriptionItem, $size, $price, $brand, $model, $condition, $id));
 }
