@@ -37,7 +37,7 @@
             $parts = explode('-', $category);
             ?>
             <li>
-            <a href="side_bar.php?category=<?= urlencode($category) ?>">
+            <a href="items_by_category.php?category=<?=($category) ?>">
               <?= $parts[1] ?>
               </a>
             </li>

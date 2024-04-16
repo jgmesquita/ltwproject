@@ -374,7 +374,7 @@ function get_all_items(PDO $dbh) : array
 
 function get_items_by_category(PDO $dbh, String $Category ):array
 {
-  $stmt = $dbh->prepare('SELECT * FROM items WHERE category =?');
+  $stmt = $dbh->prepare('SELECT * FROM items WHERE category=?');
   $stmt->execute(array($Category));
   $items = [];
   while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
