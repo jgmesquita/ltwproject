@@ -29,8 +29,8 @@ CREATE TABLE items(
     model TEXT NOT NULL,
     condition TEXT NOT NULL,
     PRIMARY KEY (id),
+    FOREIGN KEY (ownerUser) REFERENCES users(username),
     FOREIGN KEY (category) REFERENCES categories(category)
-    FOREIGN KEY (ownerUser) REFERENCES users(username)
 );
 
 DROP TABLE IF EXISTS sizes;
@@ -118,17 +118,7 @@ CREATE TABLE adminUser(
 INSERT INTO users VALUES ('jgmesquita', 'pw', 'Jorge', 'Mesquita', 'adress', 'city', 'country', 'postalCode', 'email', 'phone');
 INSERT INTO users VALUES ('user1', 'pw', 'Jorge', 'Mesquita', 'adress', 'city', 'country', 'postalCode', 'email', 'phone');
 INSERT INTO adminUser VALUES ('jgmesquita');
-INSERT INTO items VALUES (1, 'jgmesquita','Roupa - Camisola' ,'camisola', 'S', 40, 'brand', 'model', 'new');
-INSERT INTO items VALUES (2, 'jgmesquita', 'Roupa - T-Shirt','tshirt', 'S', 30, 'brand', 'model', 'new');
-INSERT INTO items VALUES (3, 'jgmesquita','Roupa - Camisola','tshirt', 'S', 20, 'brand', 'model', 'new');
-INSERT INTO items VALUES (4, 'jgmesquita', 'Roupa - T-Shirt','tshirt', 'S', 10, 'brand', 'model', 'new');
-INSERT INTO items VALUES (5, 'jgmesquita', 'Roupa - T-Shirt','tshirt', 'S', 30, 'brand', 'model', 'new');
-INSERT INTO items VALUES (6, 'jgmesquita', 'Roupa - T-Shirt','tshirt', 'S', 10, 'brand', 'model', 'new');
-INSERT INTO items VALUES (7, 'jgmesquita', 'Roupa - Camisola','camisola', 'S', 20, 'brand', 'model', 'new');
-INSERT INTO items VALUES (8, 'jgmesquita', 'Roupa - Camisola','camisola', 'S', 10, 'brand', 'model', 'new');
-INSERT INTO items VALUES (9, 'jgmesquita', 'Roupa - Camisola','camisola', 'S', 30, 'brand', 'model', 'new');
-INSERT INTO items VALUES (10, 'jgmesquita','Roupa - Camisola', 'camisola', 'S', 40, 'brand', 'model', 'new');
-INSERT INTO comment VALUES(1,1, 'user1', 'What is the price?');
+
 INSERT INTO sizes VALUES ('S');
 INSERT INTO sizes VALUES ('M');
 INSERT INTO sizes VALUES ('L');
@@ -153,3 +143,15 @@ INSERT INTO conditions VALUES ('Pouco Usado');
 INSERT INTO conditions VALUES ('Muito Usado');
 INSERT INTO conditions VALUES ('Com Defeito');
 INSERT INTO conditions VALUES ('Novo');
+
+INSERT INTO items VALUES (1, 'jgmesquita','Roupa - Camisola' ,'camisola', 'S', 40, 'brand', 'model', 'new');
+INSERT INTO items VALUES (2, 'jgmesquita', 'Roupa - T-Shirt','tshirt', 'S', 30, 'brand', 'model', 'new');
+INSERT INTO items VALUES (3, 'jgmesquita','Roupa - Camisola','tshirt', 'S', 20, 'brand', 'model', 'new');
+INSERT INTO items VALUES (4, 'jgmesquita', 'Roupa - T-Shirt','tshirt', 'S', 10, 'brand', 'model', 'new');
+INSERT INTO items VALUES (5, 'jgmesquita', 'Roupa - T-Shirt','tshirt', 'S', 30, 'brand', 'model', 'new');
+INSERT INTO items VALUES (6, 'jgmesquita', 'Roupa - T-Shirt','tshirt', 'S', 10, 'brand', 'model', 'new');
+INSERT INTO items VALUES (7, 'jgmesquita', 'Roupa - Camisola','camisola', 'S', 20, 'brand', 'model', 'new');
+INSERT INTO items VALUES (8, 'jgmesquita', 'Roupa - Camisola','camisola', 'S', 10, 'brand', 'model', 'new');
+INSERT INTO items VALUES (9, 'jgmesquita', 'Roupa - Camisola','camisola', 'S', 30, 'brand', 'model', 'new');
+INSERT INTO items VALUES (10, 'jgmesquita','Roupa - Camisola', 'camisola', 'S', 40, 'brand', 'model', 'new');
+INSERT INTO comment VALUES(1,1, 'user1', 'What is the price?');'Roupa - T-Shirt'
