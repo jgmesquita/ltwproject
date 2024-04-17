@@ -15,12 +15,13 @@
         <?php foreach ($items as $item) { ?>
             <?php if (!is_sold($dbh, $item->id)) { ?>
             <article>
-                <h3><?=$item->descriptionItem ?></h3>
+                <h3><?=$item->category?></h3>
                 <img src="https://picsum.photos/200?<?=$item->id?>"><br>
                 <a href="/pages/item.php?id=<?=$item->id?>">Link</a>
-                <p id="model"><?=$item->model?></p>
-                <p id="brand"><?=$item->brand?></p>
-                <p id="price"><?=$item->price?></p>
+                <p id="descriptionItem">Description: <?=$item->descriptionItem?></p>
+                <p id="model">Model: <?=$item->model?></p>
+                <p id="brand">Brand: <?=$item->brand?></p>
+                <p id="price">Price: <?=$item->price?>&#8364</p>
             </article>
             <?php } ?>
         <?php } ?>
@@ -29,11 +30,12 @@
 
 <?php function drawItem(PDO $dbh, Item $item, array $comments) { ?>
     <section id="item">
-        <h3><?=$item->descriptionItem ?></h3>
-        <img src="https://picsum.photos/200?<?=$item->id?>"><br>
-        <p id="model"><?=$item->model?></p>
-        <p id="brand"><?=$item->brand?></p>
-        <p id="price"><?=$item->price?></p>
+        <h3><?=$item->category?></h3>
+        <img src="/images/path.png"><br>
+        <p id="model">Model: <?=$item->model?></p>
+        <p id="brand">Brand: <?=$item->brand?></p>
+        <p id="price">Price: <?=$item->price?></p>
+        <p id="descriptionItem">Description: <?=$item->descriptionItem?></p>
     </section>
     <?php $_SESSION['id'] = $item->id; ?>
     <?php if (isset($_SESSION['username'])) { ?>
@@ -88,8 +90,10 @@
         <table>
             <tr>
                 <th>ID</th>
+                <th>Category</th>
                 <th>Description</th>
                 <th>Size</th>
+                <th>Color</th>
                 <th>Price</th>
                 <th>Brand</th>
                 <th>Model</th>
@@ -99,8 +103,10 @@
         <?php foreach ($items as $item) { ?>
             <tr>
                 <th><?=$item->id?></th>
+                <th><?=$item->category?></th>
                 <th><?=$item->descriptionItem?></th>
                 <th><?=$item->sizeItem?></th>
+                <th><?=$item->color?></th>
                 <th><?=$item->price?></th>
                 <th><?=$item->brand?></th>
                 <th><?=$item->model?></th>
@@ -123,8 +129,10 @@
         <table>
             <tr>
                 <th>ID</th>
+                <th>Category</th>
                 <th>Description</th>
                 <th>Size</th>
+                <th>Color</th>
                 <th>Price</th>
                 <th>Brand</th>
                 <th>Model</th>
@@ -136,8 +144,10 @@
         <?php foreach ($items as $item) { ?>
             <tr>
                 <th><a href="/pages/item.php?id=<?=$item->id?>"><?=$item->id?></a></th>
+                <th><?=$item->category?></th>
                 <th><?=$item->descriptionItem?></th>
                 <th><?=$item->sizeItem?></th>
+                <th><?=$item->color?></th>
                 <th><?=$item->price?></th>
                 <th><?=$item->brand?></th>
                 <th><?=$item->model?></th>
@@ -166,13 +176,17 @@
 
 <?php function drawRegisterItemForm(PDO $dbh) { ?>
     <form action="/actions/action_register_item.php" method="post" class="register_item">
-        <label for="descriptionItem">Choose a category:</label>
-        <select name="descriptionItem" id="description">
+        <label for="descriptionItem">Write a description:</label>
+        <input type="text" name="descriptionItem" placeholder="description">
+        <label for="category">Choose a category:</label>
+        <select name="category" id="category">
             <?php $categories = get_all_categories($dbh);
             foreach ($categories as $category) { ?>
                 <option value="<?=$category?>"><?=$category?></option>
             <?php } ?> 
         </select>
+        <label for="color">Color:</label>
+        <input type="text" name="color" placeholder="color">
         <label for="sizeItem">Choose a size:</label>
         <select name="sizeItem" id="sizeItem">
             <?php $sizes = get_all_sizes($dbh);
@@ -193,6 +207,8 @@
                 <option value="<?=$condition?>"><?=$condition?></option>
             <?php } ?> 
         </select>
+        <label for="picture">Upload a picture:</label>
+        <input type="text" name="imagePath" placeholder="file">
         <button type="submit">Register Item</button>
     </form>
 <?php } ?>
@@ -200,13 +216,17 @@
 <?php function drawUpdateItemForm(PDO $dbh, int $id) { ?>
     <form action="/actions/action_update_item.php" method="post" class="update_item">
         <input type="hidden" name="id" value = <?=$id?>>
-        <label for="descriptionItem">Choose a category:</label>
-        <select name="descriptionItem" id="description">
+        <label for="descriptionItem">Write a description:</label>
+        <input type="text" name="descriptionItem" placeholder="description">
+        <label for="category">Choose a category:</label>
+        <select name="category" id="category">
             <?php $categories = get_all_categories($dbh);
             foreach ($categories as $category) { ?>
                 <option value="<?=$category?>"><?=$category?></option>
             <?php } ?> 
         </select>
+        <label for="color">Color:</label>
+        <input type="text" name="color" placeholder="color">
         <label for="sizeItem">Choose a size:</label>
         <select name="sizeItem" id="sizeItem">
             <?php $sizes = get_all_sizes($dbh);
@@ -241,8 +261,10 @@
         <tr>
             <th>ID</th>
             <th>Owner</th>
+            <th>Category</th>
             <th>Description</th>
             <th>Size</th>
+            <th>Color</th>
             <th>Price</th>
             <th>Brand</th>
             <th>Model</th>

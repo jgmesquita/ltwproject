@@ -20,6 +20,6 @@
 
   $items = get_all_items($dbh);
 
-  drawHeader($session, "Admin - All Items");
+  drawHeader($session, "Admin - All Items", $dbh);
   drawListItems($dbh, $items);
   drawFooter();

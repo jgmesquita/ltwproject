@@ -8,6 +8,6 @@ require_once('../database/user.db.php');
 
 $dbh = get_database_connection();
 
-update_item($dbh, (int)$_POST['id'], $_POST['descriptionItem'], $_POST['sizeItem'], (int)$_POST['price'], $_POST['brand'], $_POST['model'], $_POST['condition']);
+update_item($dbh, (int)$_POST['id'], $_POST['category'], $_POST['descriptionItem'], $_POST['sizeItem'], $_POST['color'], (int)$_POST['price'], $_POST['brand'], $_POST['model'], $_POST['condition']);
 
 header('Location: /pages/listed_items.php');

@@ -18,6 +18,6 @@
 
   $dbh = get_database_connection();
 
-  drawHeader($session, "Search");
+  drawHeader($session, "Search", $dbh);
   drawSearchArea();
   drawFooter();

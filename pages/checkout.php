@@ -25,7 +25,7 @@
   $price = $metrics['total'];
   $quantity = $metrics['quantity'];
 
-  drawHeader($session, "Checkout");
+  drawHeader($session, "Checkout", $dbh);
   drawListItems($dbh, $items);
   drawCheckout($dbh, $quantity, $price);
   drawFooter();

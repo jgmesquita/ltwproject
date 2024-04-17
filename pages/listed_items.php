@@ -20,6 +20,6 @@
 
   $items = check_listed_items($dbh, $_SESSION['username']);
 
-  drawHeader($session, "Listed Items");
+  drawHeader($session, "Listed Items", $dbh);
   drawListedItems($dbh, $items);
   drawFooter();

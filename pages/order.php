@@ -20,6 +20,6 @@
 
   $items = check_sold_items($dbh, $_SESSION['username']);
 
-  drawHeader($session, "Wishlist Items");
+  drawHeader($session, "Wishlist Items", $dbh);
   drawListItems($dbh, $items);
   drawFooter();

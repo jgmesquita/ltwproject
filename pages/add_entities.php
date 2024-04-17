@@ -18,7 +18,7 @@
 
   $dbh = get_database_connection();
 
-  drawHeader($session, "Admin - Add Entities");
+  drawHeader($session, "Admin - Add Entities", $dbh);
   drawAddCategory();
   drawAddCondition();
   drawAddSize();

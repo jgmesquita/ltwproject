@@ -28,11 +28,11 @@
       ?>
     </header>
 
-    <div>
+    <!--<div>
       <h4>Select by Category</h4>
       <ul>
         <?php
-          $categories = get_all_categories($dbh);
+          /*$categories = get_all_categories($dbh);
           foreach($categories as $category){
             $parts = explode('-', $category);
             ?>
@@ -41,10 +41,10 @@
               <?= $parts[1] ?>
               </a>
             </li>
-          <?php } ?>    
+          <?php } */?>    
       </ul>
 
-    </div>
+    </div>-->
 
     <main>
 <?php } ?>
@@ -158,7 +158,7 @@
 
 
 
-<?php function drawItemsByCategory(PDO $dbh, String $category) { ?>
+<?php function drawItemsByCategory(PDO $dbh, string $category, string $title) { ?>
 <!DOCTYPE html>
 <html lang = "en-US">
     <head>

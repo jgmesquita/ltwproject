@@ -71,7 +71,7 @@ function add_admin(PDO $dbh, string $username): void
   $stmt->execute(array($username));
 }
 
-function register_item(PDO $dbh, string $ownerUser, string $descriptionItem, string $sizeItem, int $price, string $brand, string $model, string $condtion) : void 
+function register_item(PDO $dbh, string $ownerUser, string $category, string $descriptionItem, string $sizeItem, string $color, int $price, string $brand, string $model, string $condtion, string $imagePath) : void 
 {
   $stmt = $dbh->prepare('SELECT MAX(id) AS max_id FROM items');
   $stmt->execute();
@@ -79,8 +79,8 @@ function register_item(PDO $dbh, string $ownerUser, string $descriptionItem, str
   $id = $row['max_id'] ?? 0;
   $id = $id + 1;
 
-  $stmt = $dbh->prepare('INSERT INTO items VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
-  $stmt->execute(array($id, $ownerUser, $descriptionItem, $sizeItem, $price, $brand, $model, $condtion));
+  $stmt = $dbh->prepare('INSERT INTO items VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+  $stmt->execute(array($id, $ownerUser, $category, $descriptionItem, $sizeItem, $color, $price, $brand, $model, $condtion, $imagePath));
 }
 
 function check_listed_items(PDO $dbh, string $username) : array 
@@ -92,12 +92,15 @@ function check_listed_items(PDO $dbh, string $username) : array
     $items[] = new Item(
       $row['id'],
       $row['ownerUser'],
+      $row['category'],
       $row['descriptionItem'],
       $row['sizeItem'],
+      $row['color'],
       $row['price'],
       $row['brand'],
       $row['model'],
-      $row['condition']
+      $row['condition'],
+      $row['imagePath']
     );
   }
   return $items;
@@ -112,12 +115,15 @@ function check_wishlist_items(PDO $dbh, string $username) : array
     $items[] = new Item(
       $row['id'],
       $row['ownerUser'],
+      $row['category'],
       $row['descriptionItem'],
       $row['sizeItem'],
+      $row['color'],
       $row['price'],
       $row['brand'],
       $row['model'],
-      $row['condition']
+      $row['condition'],
+      $row['imagePath']
     );
   }
   return $items;
@@ -132,12 +138,15 @@ function check_checkout_items(PDO $dbh, string $username) : array
     $items[] = new Item(
       $row['id'],
       $row['ownerUser'],
+      $row['category'],
       $row['descriptionItem'],
       $row['sizeItem'],
+      $row['category'],
       $row['price'],
       $row['brand'],
       $row['model'],
-      $row['condition']
+      $row['condition'],
+      $row['imagePath']
     );
   }
   return $items;
@@ -152,12 +161,15 @@ function check_sold_items(PDO $dbh, string $username) : array
     $items[] = new Item(
       $row['id'],
       $row['ownerUser'],
+      $row['category'],
       $row['descriptionItem'],
       $row['sizeItem'],
+      $row['color'],
       $row['price'],
       $row['brand'],
       $row['model'],
-      $row['condition']
+      $row['condition'],
+      $row['imagePath']
     );
   }
   return $items;
@@ -233,12 +245,15 @@ function get_item(PDO $dbh, int $id) : Item
   $item = new Item(
     $row['id'],
     $row['ownerUser'],
+    $row['category'],
     $row['descriptionItem'],
     $row['sizeItem'],
+    $row['color'],
     $row['price'],
     $row['brand'],
     $row['model'],
-    $row['condition']
+    $row['condition'],
+    $row['imagePath']
   );
   return $item;
 }
@@ -361,32 +376,38 @@ function get_all_items(PDO $dbh) : array
     $items[] = new Item(
       $row['id'],
       $row['ownerUser'],
+      $row['category'],
       $row['descriptionItem'],
       $row['sizeItem'],
+      $row['color'],
       $row['price'],
       $row['brand'],
       $row['model'],
-      $row['condition']
+      $row['condition'],
+      $row['imagePath']
     );
   }
   return $items;
 }
 
-function get_items_by_category(PDO $dbh, String $Category ):array
+function get_items_by_category(PDO $dbh, String $category ):array
 {
   $stmt = $dbh->prepare('SELECT * FROM items WHERE category=?');
-  $stmt->execute(array($Category));
+  $stmt->execute(array($category));
   $items = [];
   while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $items[] = new Item(
       $row['id'],
       $row['ownerUser'],
+      $row['category'],
       $row['descriptionItem'],
       $row['sizeItem'],
+      $row['color'],
       $row['price'],
       $row['brand'],
       $row['model'],
-      $row['condition']
+      $row['condition'],
+      $row['imagePath']
     );
   }
   return $items;
@@ -460,8 +481,8 @@ function generate_file(PDO $dbh, string $seller, string $buyer) : void
   fclose($file);
 }
 
-function update_item(PDO $dbh, int $id, string $descriptionItem, string $size, int $price, string $brand, string $model, string $condition) : void 
+function update_item(PDO $dbh, int $id, string $category, string $descriptionItem, string $size, string $color, int $price, string $brand, string $model, string $condition) : void 
 {
-  $stmt = $dbh->prepare('UPDATE items SET descriptionItem = ?, sizeItem = ?, price = ?, brand = ?, model = ?, condition = ? WHERE id = ?');
-  $stmt->execute(array($descriptionItem, $size, $price, $brand, $model, $condition, $id));
+  $stmt = $dbh->prepare('UPDATE items SET category = ?, descriptionItem = ?, sizeItem = ?, color = ?, price = ?, brand = ?, model = ?, condition = ? WHERE id = ?');
+  $stmt->execute(array($category, $descriptionItem, $size, $color, $price, $brand, $model, $condition, $id));
 }

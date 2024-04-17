@@ -22,6 +22,6 @@
 
   $comments = get_comments($dbh, (int)$_GET['id']);
 
-  drawHeader($session, "Item - " . $item->id);
+  drawHeader($session, "Item - " . $item->id, $dbh);
   drawItem($dbh, $item, $comments);
   drawFooter();

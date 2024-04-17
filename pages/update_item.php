@@ -14,6 +14,6 @@
 
   $dbh = get_database_connection();
 
-  drawHeader($session, "Update Item");
+  drawHeader($session, "Update Item", $dbh);
   drawUpdateItemForm($dbh, (int)$_GET['id']);
   drawFooter();

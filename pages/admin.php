@@ -16,7 +16,7 @@
 
   $dbh = get_database_connection();
 
-  drawHeader($session, "Admin");
+  drawHeader($session, "Admin", $dbh);
   if (is_admin($dbh, $_SESSION['username'])) {
     drawAdminOptions();
   }
