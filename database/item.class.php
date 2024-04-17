@@ -4,6 +4,7 @@
   class Item {
     public int $id;
     public string $ownerUser;
+    public string $category;
     public string $descriptionItem;
     public string $sizeItem;
     public int $price;
