@@ -16,7 +16,7 @@
             <?php if (!is_sold($dbh, $item->id)) { ?>
             <article>
                 <h3><?=$item->category?></h3>
-                <img src="https://picsum.photos/200?<?=$item->id?>"><br>
+                <img src="/images/path.png"><br>
                 <a href="/pages/item.php?id=<?=$item->id?>">Link</a>
                 <p id="descriptionItem">Description: <?=$item->descriptionItem?></p>
                 <p id="model">Model: <?=$item->model?></p>
@@ -31,7 +31,7 @@
 <?php function drawItem(PDO $dbh, Item $item, array $comments) { ?>
     <section id="item">
         <h3><?=$item->category?></h3>
-        <img src="/images/path.png"><br>
+        <img src=<?=$item->imagePath?>><br>
         <p id="model">Model: <?=$item->model?></p>
         <p id="brand">Brand: <?=$item->brand?></p>
         <p id="price">Price: <?=$item->price?></p>
@@ -175,7 +175,7 @@
 <?php } ?>
 
 <?php function drawRegisterItemForm(PDO $dbh) { ?>
-    <form action="/actions/action_register_item.php" method="post" class="register_item">
+    <form action="/actions/action_register_item.php" method="post" class="register_item" enctype="multipart/form-data">
         <label for="descriptionItem">Write a description:</label>
         <input type="text" name="descriptionItem" placeholder="description">
         <label for="category">Choose a category:</label>
@@ -207,8 +207,8 @@
                 <option value="<?=$condition?>"><?=$condition?></option>
             <?php } ?> 
         </select>
-        <label for="picture">Upload a picture:</label>
-        <input type="text" name="imagePath" placeholder="file">
+        <label for="image">Upload a picture:</label>
+        <input type="file" name="image" placeholder="file">
         <button type="submit">Register Item</button>
     </form>
 <?php } ?>

@@ -19,3 +19,4 @@
   drawHeader($session, 'Amazon LTW Shop', $dbh);
   drawItems($dbh, $items);
   drawFooter();
+  
