@@ -53,3 +53,19 @@ function encodeForAjax(data) {
     return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
   }).join('&')
 }
+
+function displayCurrency() {
+  var select = document.getElementById('currency');
+  var currency = select.value;
+  var costElement = document.querySelector('input[name="cost"]');
+  var cost = parseInt(costElement.value);
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '/api/api_convert_currency.php?currency=' + currency + '&cost=' + cost, true);
+  
+  xhr.onload = function() {
+      if (xhr.status == 200) {
+          document.getElementById('output').innerHTML = 'Converted value: ' + xhr.responseText + currency;
+      }
+  };
+  xhr.send();
+}

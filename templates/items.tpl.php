@@ -279,7 +279,19 @@
 <?php } ?>
 
 <?php function drawCheckout(PDO $dbh, int $total, int $quantity) { ?>
-    <p>Your order has a total of <?= $total?> items and the cost is <?=$quantity?>!</p>
+    <p>Your order has a total of <?= $total?> items and the cost is <?=$quantity?>&#8364!</p>
+    <input type="hidden" name="cost" value = <?=$quantity?>>
+    <label>Change currency:</label>
+    <section id="currency_conversion">
+        <select name="currency" id="currency" onchange="displayCurrency()">
+            <option value="USD">USD</option>
+            <option value="JPY">JPY</option>
+            <option value="RMB">RMB</option>
+            <option value="KRW">KRW</option>
+            <option value="GBP">GBP</option>
+        </select>
+    </section>
+    <div id="output">Selected Currency: None</div>
     <form action="/actions/action_checkout.php" method="post" class="checkout">
         <button type="submit">Checkout</button>
     </form>
