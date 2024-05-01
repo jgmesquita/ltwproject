@@ -21,6 +21,6 @@
     drawAdminOptions();
   }
   else {
-    echo "You are not an admin!";
+    header('Location: /pages/where.php?error=4');
   }
   drawFooter();

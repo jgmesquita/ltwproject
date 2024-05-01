@@ -11,5 +11,5 @@ $dbh = get_database_connection();
 if (verify_user($dbh, $_POST['username'], $_POST['password'])) {
   $_SESSION['username'] = $_POST['username'];
   header('Location: /pages/index.php');
-} else  header('Location: /pages/where.php');
+} else  header('Location: /pages/where.php?error=6');
 

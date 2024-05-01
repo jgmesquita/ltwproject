@@ -105,7 +105,7 @@
 
 <?php function drawLogoutForm(Session $session) { ?>
   <form action="/actions/action_logout.php" method="post" class="logout">
-    <a href="/pages/profile.php"><?=$session->getId()?></a>
+    <a href="/pages/profile.php"><?=htmlentities($session->getId())?></a>
     <button type="submit">Logout</button>
     <a href="/pages/search.php">Search</a>
     <a href="/pages/register_item.php">Register Item</a>
@@ -177,4 +177,15 @@
         </h4>
     </body>
 
+<?php } ?>
+
+<?php function drawError(int $error) { ?>
+  <?php switch ($error) { 
+    case 1: ?> <p>The password must have at least 8 characters, one of which must be a number!</p> <?php break;
+    case 2: ?> <p>The username is already being used! Try another one!</p> <?php break;
+    case 3: ?> <p>You must be login to use this feature!</p> <?php break;
+    case 4: ?> <p>You must be an admin to use this page!</p> <?php break; 
+    case 5: ?> <p>There was an error! Please try again!</p> <?php break;
+    case 6: ?> <p>The username/password is incorrect!</p> <?php break;
+  } ?>
 <?php } ?>

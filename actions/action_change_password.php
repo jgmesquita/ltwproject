@@ -10,4 +10,4 @@ $dbh = get_database_connection();
 
 if (change_password($dbh, $_SESSION['username'], $_POST['password'])) {
     header('Location: /pages/index.php');
-} else header('Location: /pages/where.php');
+} else header('Location: /pages/where.php?error=5');

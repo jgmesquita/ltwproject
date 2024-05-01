@@ -19,5 +19,10 @@
   $dbh = get_database_connection();
 
   drawHeader($session, "Admin - Elevate User", $dbh);
-  drawElevateAdmin();
+  if (is_admin($dbh, $_SESSION['username'])) {
+    drawElevateAdmin();
+  }
+  else {
+    header('Location: /pages/where.php?error=4');
+  }
   drawFooter();

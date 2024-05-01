@@ -17,11 +17,11 @@
             <article>
                 <h3><?=$item->category?></h3>
                 <img src="/images/path.png"><br>
-                <a href="/pages/item.php?id=<?=$item->id?>">Link</a>
-                <p id="descriptionItem">Description: <?=$item->descriptionItem?></p>
-                <p id="model">Model: <?=$item->model?></p>
-                <p id="brand">Brand: <?=$item->brand?></p>
-                <p id="price">Price: <?=$item->price?>&#8364</p>
+                <a href="/pages/item.php?id=<?=urldecode($item->id)?>">Link</a>
+                <p id="descriptionItem">Description: <?=htmlspecialchars($item->descriptionItem)?></p>
+                <p id="model">Model: <?=htmlspecialchars($item->model)?></p>
+                <p id="brand">Brand: <?=htmlspecialchars($item->brand)?></p>
+                <p id="price">Price: <?=htmlspecialchars($item->price)?>&#8364</p>
             </article>
             <?php } ?>
         <?php } ?>
@@ -32,10 +32,10 @@
     <section id="item">
         <h3><?=$item->category?></h3>
         <img src=<?=$item->imagePath?>><br>
-        <p id="model">Model: <?=$item->model?></p>
-        <p id="brand">Brand: <?=$item->brand?></p>
+        <p id="model">Model: <?=htmlspecialchars($item->model)?></p>
+        <p id="brand">Brand: <?=htmlspecialchars($item->brand)?></p>
         <p id="price">Price: <?=$item->price?></p>
-        <p id="descriptionItem">Description: <?=$item->descriptionItem?></p>
+        <p id="descriptionItem">Description: <?=htmlspecialchars($item->descriptionItem)?></p>
     </section>
     <?php $_SESSION['id'] = $item->id; ?>
     <?php if (isset($_SESSION['username'])) { ?>
@@ -65,20 +65,22 @@
     <section id="comments">
         <?php foreach ($comments as $comment) { ?>
             <section id="comment">
-                <p id="userComment"><?=$comment->user?> commented:</p>
-                <p id="textComment"><?=$comment->text?></p>
+                <p id="userComment"><?=htmlspecialchars($comment->user)?> commented:</p>
+                <p id="textComment"><?=htmlspecialchars($comment->text)?></p>
                 <?php $replies = get_all_replies($dbh, $comment->id);
                 foreach ($replies as $reply) { ?>
                     <section id="reply">
-                    <p id="userReply"><?=$reply->user?> replied:</p>
-                    <p id="textReply"><?=$reply->text?></p>
+                    <p id="userReply"><?=htmlspecialchars($reply->user)?> replied:</p>
+                    <p id="textReply"><?=htmlspecialchars($reply->text)?></p>
                     </section>
                 <?php } ?>
+                <?php if (isset($_SESSION['username'])) { ?>
                 <form action="/actions/action_add_reply.php" method="post" class="reply">
                     <input type="hidden" name="id" value = <?=$comment->id?>>
                     <input type="text" name="reply" placeholder="reply">
                     <button type="submit">Reply</button>
                 </form>
+                <?php } ?>
             </section>
         <?php } ?>
     </section>

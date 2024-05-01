@@ -19,7 +19,12 @@
   $dbh = get_database_connection();
 
   drawHeader($session, "Admin - Add Entities", $dbh);
-  drawAddCategory();
-  drawAddCondition();
-  drawAddSize();
+  if (is_admin($dbh, $_SESSION['username'])) {
+    drawAddCategory();
+    drawAddCondition();
+    drawAddSize();
+  }
+  else {
+    header('Location: /pages/where.php?error=4');
+  }
   drawFooter();

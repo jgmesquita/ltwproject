@@ -17,5 +17,10 @@
   $dbh = get_database_connection();
 
   drawHeaderNoLogin($session, "Change Email");
-  drawChangeEmail();
+  if (isset($_SESSION['username'])) {
+    drawChangeEmail();
+  }
+  else {
+    header('Location: /pages/where.php?error=3');
+  }
   drawFooter();

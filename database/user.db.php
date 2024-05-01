@@ -7,15 +7,29 @@ require_once('../database/connection.db.php');
 require_once('../database/comment.class.php');
 
 require_once('../database/reply.class.php');
-function register_user(PDO $dbh, string $username, string $password, string $firstName, string $lastName, string $address_, string $city, string $country, string $postalCode, string $email, string $phone): void
+function register_user(PDO $dbh, string $username, string $password, string $firstName, string $lastName, string $address_, string $city, string $country, string $postalCode, string $email, string $phone): int
 {
+  if (!check_string($password)) {
+    return 1;
+  }
+  $options = ['cost' => 12];
   if (!user_exist($dbh, $username)) {
     $stmt = $dbh->prepare('INSERT INTO users VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
-    $stmt->execute(array($username, sha1($password), $firstName, $lastName, $address_, $city, $country, $postalCode, $email, $phone));
+    $stmt->execute(array($username, password_hash($password, PASSWORD_DEFAULT, $options), $firstName, $lastName, $address_, $city, $country, $postalCode, $email, $phone));
   }
   else {
-    header('Location: /pages/where.php');
+    return 2;
   }
+  return 0;
+}
+
+function check_string($str) : bool 
+{
+  $numMatches = preg_match_all('/\d/', $str, $matches);
+  if (strlen($str) >= 8 && $numMatches >= 1) {
+    return true;
+  }
+  return false;
 }
 
 function user_exist(PDO $dbh, string $username): bool 
@@ -27,9 +41,14 @@ function user_exist(PDO $dbh, string $username): bool
 
 function verify_user(PDO $dbh, string $username, string $password): bool
 {
-  $stmt = $dbh->prepare('SELECT * FROM users WHERE username = ? AND pw = ?');
-  $stmt->execute(array($username, sha1($password)));
-  return $stmt->fetch() !== false;
+  $stmt = $dbh->prepare('SELECT * FROM users WHERE username = ?');
+  $stmt->execute(array($username));
+  if ($row = $stmt->fetch()) {
+    return password_verify($password, $row['pw']);
+  }
+  else {
+    return false;
+  }
 }
 
 function change_username(PDO $dbh, string $username, string $new_username): bool 
@@ -53,8 +72,9 @@ function change_email(PDO $dbh, string $username, string $new_email): bool
 }
 function change_password(PDO $dbh, string $username, string $new_password): bool 
 {
+  $options = ['cost' => 12];
   $stmt = $dbh->prepare('UPDATE users SET pw = ? WHERE username = ?');
-  $status = $stmt->execute(array(sha1($new_password), $username));
+  $status = $stmt->execute(array(password_hash($new_password, PASSWORD_DEFAULT, $options), $username));
   return $status;
 }
 

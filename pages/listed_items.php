@@ -18,8 +18,14 @@
 
   $dbh = get_database_connection();
 
-  $items = check_listed_items($dbh, $_SESSION['username']);
+  if (isset($_SESSION['username'])) {
 
-  drawHeader($session, "Listed Items", $dbh);
-  drawListedItems($dbh, $items);
-  drawFooter();
+    $items = check_listed_items($dbh, $_SESSION['username']);
+
+    drawHeader($session, "Listed Items", $dbh);
+    drawListedItems($dbh, $items);
+    drawFooter();
+  }
+  else {
+    header('Location: /pages/where.php?error=3');
+  }

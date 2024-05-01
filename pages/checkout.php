@@ -18,14 +18,20 @@
 
   $dbh = get_database_connection();
 
-  $items = check_checkout_items($dbh, $_SESSION['username']);
+  if (isset($_SESSION['username'])) {
 
-  $metrics = calculate_checkout_metrics($items);
+    $items = check_checkout_items($dbh, $_SESSION['username']);
 
-  $price = $metrics['total'];
-  $quantity = $metrics['quantity'];
+    $metrics = calculate_checkout_metrics($items);
 
-  drawHeader($session, "Checkout", $dbh);
-  drawListItems($dbh, $items);
-  drawCheckout($dbh, $quantity, $price);
-  drawFooter();
+    $price = $metrics['total'];
+    $quantity = $metrics['quantity'];
+
+    drawHeader($session, "Checkout", $dbh);
+    drawListItems($dbh, $items);
+    drawCheckout($dbh, $quantity, $price);
+    drawFooter();
+  }
+  else {
+    header('Location: /pages/where.php?error=3');
+  }

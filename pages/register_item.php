@@ -15,5 +15,10 @@
   $dbh = get_database_connection();
 
   drawHeader($session, "Register Item", $dbh);
-  drawRegisterItemForm($dbh);
+  if (isset($_SESSION['username'])) {
+    drawRegisterItemForm($dbh);
+  }
+  else {
+    header('Location: /pages/where.php?error=3');
+  }
   drawFooter();

@@ -14,7 +14,6 @@
 
   $dbh = get_database_connection();
 
-  drawHeader($session, "Welcome to Hell!!!!!", $dbh);
-  ?>
-  <p> MUAHAHAHAHAH WRONG PASSWORD OR FAILED REGISTER!!! </p>
-  <?php drawFooter();
+  drawHeader($session, "Error", $dbh);
+  drawError((int)$_GET['error']);
+  drawFooter();

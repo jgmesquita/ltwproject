@@ -17,5 +17,10 @@
   $dbh = get_database_connection();
 
   drawHeaderNoLogin($session, "Edit Profile");
-  drawOptionsProfile();
+  if (isset($_SESSION['username'])) {
+    drawOptionsProfile();
+  }
+  else {
+    header('Location: /pages/where.php?error=3');
+  }
   drawFooter();

@@ -21,5 +21,10 @@
   $items = get_all_items($dbh);
 
   drawHeader($session, "Admin - All Items", $dbh);
-  drawListItems($dbh, $items);
+  if (is_admin($dbh, $_SESSION['username'])) {
+    drawListItems($dbh, $items);
+  }
+  else {
+    header('Location: /pages/where.php?error=4');
+  }
   drawFooter();

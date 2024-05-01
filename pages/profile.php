@@ -16,6 +16,11 @@
 
   $dbh = get_database_connection();
 
-  drawHeaderNoLogin($session, "Profile - " . $_SESSION['username']);
-  drawProfile();
-  drawFooter();
+  if (isset($_SESSION['username'])) {
+    drawHeaderNoLogin($session, "Profile - " . $_SESSION['username']);
+    drawProfile();
+    drawFooter();
+  }
+  else {
+    header('Location: /pages/where.php?error=3');
+  }
