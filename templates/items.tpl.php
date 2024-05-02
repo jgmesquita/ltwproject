@@ -179,7 +179,7 @@
 <?php function drawRegisterItemForm(PDO $dbh) { ?>
     <form action="/actions/action_register_item.php" method="post" class="register_item" enctype="multipart/form-data">
         <label for="descriptionItem">Write a description:</label>
-        <input type="text" name="descriptionItem" placeholder="description">
+        <input type="text" name="descriptionItem" placeholder="description" required>
         <label for="category">Choose a category:</label>
         <select name="category" id="category">
             <?php $categories = get_all_categories($dbh);
@@ -188,7 +188,7 @@
             <?php } ?> 
         </select>
         <label for="color">Color:</label>
-        <input type="text" name="color" placeholder="color">
+        <input type="text" name="color" placeholder="color" required>
         <label for="sizeItem">Choose a size:</label>
         <select name="sizeItem" id="sizeItem">
             <?php $sizes = get_all_sizes($dbh);
@@ -197,11 +197,11 @@
             <?php } ?> 
         </select>
         <label for="price">Price:</label>
-        <input type="number" name="price" placeholder="price">
+        <input type="number" name="price" placeholder="price" required>
         <label for="brand">Brand:</label>
-        <input type="text" name="brand" placeholder="brand">
+        <input type="text" name="brand" placeholder="brand" required>
         <label for="model">Model:</label>
-        <input type="text" name="model" placeholder="model">
+        <input type="text" name="model" placeholder="model" required>
         <label for="condition">Choose a condition:</label>
         <select name="condition" id="condition">
             <?php $conditions = get_all_conditions($dbh);
@@ -210,7 +210,7 @@
             <?php } ?> 
         </select>
         <label for="image">Upload a picture:</label>
-        <input type="file" name="image" placeholder="file">
+        <input type="file" name="image" placeholder="file" required>
         <button type="submit">Register Item</button>
     </form>
 <?php } ?>
@@ -219,7 +219,7 @@
     <form action="/actions/action_update_item.php" method="post" class="update_item">
         <input type="hidden" name="id" value = <?=$id?>>
         <label for="descriptionItem">Write a description:</label>
-        <input type="text" name="descriptionItem" placeholder="description">
+        <input type="text" name="descriptionItem" placeholder="description" required>
         <label for="category">Choose a category:</label>
         <select name="category" id="category">
             <?php $categories = get_all_categories($dbh);
@@ -228,7 +228,7 @@
             <?php } ?> 
         </select>
         <label for="color">Color:</label>
-        <input type="text" name="color" placeholder="color">
+        <input type="text" name="color" placeholder="color" required>
         <label for="sizeItem">Choose a size:</label>
         <select name="sizeItem" id="sizeItem">
             <?php $sizes = get_all_sizes($dbh);
@@ -237,11 +237,11 @@
             <?php } ?> 
         </select>
         <label for="price">Price:</label>
-        <input type="number" name="price" placeholder="price">
+        <input type="number" name="price" placeholder="price" required>
         <label for="brand">Brand:</label>
-        <input type="text" name="brand" placeholder="brand">
+        <input type="text" name="brand" placeholder="brand" required>
         <label for="model">Model:</label>
-        <input type="text" name="model" placeholder="model">
+        <input type="text" name="model" placeholder="model" required>
         <label for="condition">Choose a condition:</label>
         <select name="condition" id="condition">
             <?php $conditions = get_all_conditions($dbh);

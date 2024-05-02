@@ -79,8 +79,8 @@
 
 <?php function drawLoginForm() { ?>
   <form action="/actions/action_login.php" method="post" class="login">
-    <input type="username" name="username" placeholder="username">
-    <input type="password" name="password" placeholder="password">
+    <input type="username" name="username" placeholder="username" required>
+    <input type="password" name="password" placeholder="password" required>
     <button type="submit">Login</button>
     <a href="/pages/register.php"> Register</a>
     <a href="/pages/search.php"> Search</a>
@@ -89,16 +89,16 @@
 
 <?php function drawRegisterForm() { ?>
   <form action="/actions/action_register.php" method="post" class="register">
-    <input type="username" name="username" placeholder="username">
-    <input type="password" name="password" placeholder="password">
-    <input type="text" name="firstName" placeholder="firstName">
-    <input type="text" name="lastName" placeholder="lastName">
-    <input type="text" name="address_" placeholder="address_">
-    <input type="text" name="city" placeholder="city">
-    <input type="text" name="country" placeholder="country">
-    <input type="text" name="postalCode" placeholder="postalCode">
-    <input type="text" name="email" placeholder="email">
-    <input type="text" name="phone" placeholder="phone">
+    <input type="username" name="username" placeholder="username" required>
+    <input type="password" name="password" placeholder="password" required>
+    <input type="text" name="firstName" placeholder="firstName" required>
+    <input type="text" name="lastName" placeholder="lastName" required>
+    <input type="text" name="address_" placeholder="address_" required>
+    <input type="text" name="city" placeholder="city" required>
+    <input type="text" name="country" placeholder="country" required>
+    <input type="text" name="postalCode" placeholder="postalCode" required>
+    <input type="text" name="email" placeholder="email" required>
+    <input type="text" name="phone" placeholder="phone" required>
     <button type="submit">Register</button>
   </form>
 <?php } ?>
@@ -115,7 +115,7 @@
 
 <?php function drawChangeUsername() { ?>
   <form action="/actions/action_change_username.php" method="post" class="change_username">
-    <input type=text name="username" placeholder="new username">
+    <input type=text name="username" placeholder="new username" required>
     <button type="submit">Change Username</button>
   </form>
   <a href="/pages/profile.php">Back</a>
@@ -123,8 +123,8 @@
 
 <?php function drawChangeName() { ?>
   <form action="/actions/action_change_name.php" method="post" class="change_name">
-    <input type=text name="firstName" placeholder="new firstName">
-    <input type=text name="lastName" placeholder="new lastName">
+    <input type=text name="firstName" placeholder="new firstName" required>
+    <input type=text name="lastName" placeholder="new lastName" required>
     <button type="submit">Change Name</button>
   </form>
   <a href="/pages/profile.php">Back</a>
@@ -132,7 +132,7 @@
 
 <?php function drawChangeEmail() { ?>
   <form action="/actions/action_change_email.php" method="post" class="change_name">
-    <input type=text name="email" placeholder="new email">
+    <input type=text name="email" placeholder="new email" required>
     <button type="submit">Change Email</button>
   </form>
   <a href="/pages/profile.php">Back</a>
@@ -140,7 +140,7 @@
 
 <?php function drawChangePassword() { ?>
   <form action="/actions/action_change_password.php" method="post" class="change_name">
-    <input type=text name="password" placeholder="new password">
+    <input type=text name="password" placeholder="new password" required>
     <button type="submit">Change Password</button>
   </form>
   <a href="/pages/profile.php">Back</a>
