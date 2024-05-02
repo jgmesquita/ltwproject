@@ -17,11 +17,11 @@
             <article>
                 <h3><?=$item->category?></h3>
                 <img src="/images/path.png"><br>
-                <a href="/pages/item.php?id=<?=urldecode($item->id)?>">Link</a>
+                <a href="/pages/item.php?id=<?=$item->id?>">Link</a>
                 <p id="descriptionItem">Description: <?=htmlspecialchars($item->descriptionItem)?></p>
                 <p id="model">Model: <?=htmlspecialchars($item->model)?></p>
                 <p id="brand">Brand: <?=htmlspecialchars($item->brand)?></p>
-                <p id="price">Price: <?=htmlspecialchars($item->price)?>&#8364</p>
+                <p id="price">Price: <?=$item->price?>&#8364</p>
             </article>
             <?php } ?>
         <?php } ?>
