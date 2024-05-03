@@ -1,6 +1,7 @@
 body {
+    margin: 0 7em;
     display: grid;
-    width: 60em;
+    width: 70em;
     grid-template-columns: auto auto;
     grid-template-rows: auto auto auto;
     grid-template-areas: "header header" "main aside" "footer footer";
@@ -34,10 +35,34 @@ header form section {
     display: flex;
     flex-direction: column;
     text-align: center;
-    background-color: rgb(87, 171, 227);
+    background-color: rgb(255, 255, 255);
     border-radius: 1em;
     padding: 1em;
     margin: 1em;
+    margin-left: 10em;
+}
+
+header form section a {
+    width: 10em;
+    background-color: #ed7a7a;
+    padding: 1em;
+    margin: 1em;
+    border-radius: 4px;
+}
+
+header form section a:hover {
+    background-color: #f55050; 
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); 
+    transform: translateY(-2px); 
+}
+  
+header form section a:active {
+    transform: translateY(1px);
+}
+  
+header form section a:focus {
+    outline: none; 
+    box-shadow: 0 0 8px 2px rgba(255,255,255,0.6); 
 }
 
 
@@ -55,7 +80,7 @@ body > footer {
 
 body > main {
     text-align: center;
-    width: 45em;
+    width: 60em;
     grid-area: main;
     padding: 1em;
     background-color: blanchedalmond;
@@ -179,6 +204,80 @@ form section {
 }
 
 table {
+    width: 100%; 
+    border-collapse: collapse; 
+    table-layout: fixed; 
+}
+
+th, td {
+    padding: 12px 15px; 
+    text-align: left; 
+    border-bottom: 1px solid #ddd; 
+}
+
+th {
+    background-color: rgb(148, 205, 119);
+    color: white; 
+    font-weight: bold; 
+}
+
+tr:nth-child(odd) {
+    background-color: white;
+}
+
+tr:nth-child(even) {
+    background-color: rgb(148, 205, 119);
+}
+
+tr:hover {
+    background-color: #ddd;
+    cursor: pointer; 
+}
+
+table {
     margin-left: auto;
     margin-right: auto;
+}
+
+#currency_conversion {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    background-color: #e4ae40;
+    padding: 1em;
+    color: white;
+    border-radius: 4px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#actions {
+    width: 50%;
+    margin: 0 auto;
+}
+
+#search label {
+    display: flex;
+    color: white;
+    background-color: #ed7a7a;
+    font-size: large;
+    padding: 1em;
+    border-radius: 4px;
+}
+
+#item {
+    background-color: white;
+    padding: 1em;
+}
+
+#item img {
+    width: 50%;
+    margin: 0 auto;
+}
+
+#item h3 {
+    background-color: rgb(157, 157, 235);
+    padding: 1em;
+    color: white;
+    border-radius: 4px;
 }

@@ -33,11 +33,13 @@
 <?php function drawItem(PDO $dbh, Item $item, array $comments) { ?>
     <section id="item">
         <h3><?=$item->category?></h3>
-        <img src=<?=$item->imagePath?>><br>
-        <p id="model">Model: <?=htmlspecialchars($item->model)?></p>
-        <p id="brand">Brand: <?=htmlspecialchars($item->brand)?></p>
-        <p id="price">Price: <?=$item->price?></p>
-        <p id="descriptionItem">Description: <?=htmlspecialchars($item->descriptionItem)?></p>
+        <img src=<?=$item->imagePath?>>
+        <section id="specific">
+            <p id="model">Model: <?=htmlspecialchars($item->model)?></p>
+            <p id="brand">Brand: <?=htmlspecialchars($item->brand)?></p>
+            <p id="price">Price: <?=$item->price?></p>
+            <p id="descriptionItem">Description: <?=htmlspecialchars($item->descriptionItem)?></p>
+        </section>
     </section>
     <?php $_SESSION['id'] = $item->id; ?>
     <?php if (isset($_SESSION['username'])) { ?>
@@ -257,9 +259,8 @@
 
 <?php function drawSearchArea() { ?>
   <section id="search">
-    <label>Description:
-      <input type="text">
-    </label>
+    <label>Search an item by writting its description:</label>
+    <input type="text">
     <table>
       <thead>
         <tr>
@@ -282,10 +283,10 @@
 <?php } ?>
 
 <?php function drawCheckout(PDO $dbh, int $total, int $quantity) { ?>
-    <p>Your order has a total of <?= $total?> items and the cost is <?=$quantity?>&#8364!</p>
+    <section id="details">Your order has a total of <?= $total?> items and the cost is <?=$quantity?>&#8364!</section>
     <input type="hidden" name="cost" value = <?=$quantity?>>
-    <label>Change currency:</label>
     <section id="currency_conversion">
+        <label>Change currency:</label>
         <select name="currency" id="currency" onchange="displayCurrency()">
             <option value="USD">USD</option>
             <option value="JPY">JPY</option>
@@ -293,12 +294,14 @@
             <option value="KRW">KRW</option>
             <option value="GBP">GBP</option>
         </select>
-    </section>
     <div id="output">Selected Currency: None</div>
+    </section>
+    <section id="actions">
     <form action="/actions/action_checkout.php" method="post" class="checkout">
-        <button type="submit">Checkout</button>
+        <button type="submit" id="checkout">Checkout</button>
     </form>
     <form action="/actions/action_remove_all_items_checkout.php" method="post" class="remove_checkout">
         <button type="submit">Remove All Items</button>
     </form>
+    </section>
 <?php } ?>
