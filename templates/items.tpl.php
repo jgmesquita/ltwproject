@@ -35,6 +35,7 @@
         <h3><?=$item->category?></h3>
         <img src=<?=$item->imagePath?>>
         <section id="specific">
+            <p id="seller">Seller: <?=htmlspecialchars($item->ownerUser)?></p>
             <p id="model">Model: <?=htmlspecialchars($item->model)?></p>
             <p id="brand">Brand: <?=htmlspecialchars($item->brand)?></p>
             <p id="price">Price: <?=$item->price?></p>
@@ -43,13 +44,19 @@
     </section>
     <?php $_SESSION['id'] = $item->id; ?>
     <?php if (isset($_SESSION['username'])) { ?>
-    <form action="/actions/action_add_comment.php" method="post" class="comment">
-        <input type="text" name="comment" placeholder="comment">
-        <button type="submit">Write Comment</button>
-    </form>
+    <section id="addcomment">
+        <h3>Do you have any questions? Try to comment!</h3>
+        <form action="/actions/action_add_comment.php" method="post" class="comment">
+            <input type="text" name="comment" placeholder="comment">
+            <button type="submit">Write Comment</button>
+        </form>
+    </section>
+    <section id="wb">
+        <h3>Interact with the item!</h3>
     <?php if (!is_wishlist_item($dbh, $_SESSION['username'], $item->id)) { ?>
     <form action="/actions/action_add_wishlist.php" method="post" class="wishlist">
-        <button type="submit">Add to Wishlist</button>
+            <button type="submit">Add to Wishlist</button>
+        </section>
     </form>
     <?php } else { ?>
         <form action="/actions/action_remove_wishlist.php" method="post" class="wishlist">
@@ -64,6 +71,7 @@
         <form action="/actions/action_unbuy_item.php" method="post" class="buy">
         <button type="submit">Remove from Cart</button>
     </form>
+    </section>
     <?php } ?>
     <?php } ?>
     <section id="comments">

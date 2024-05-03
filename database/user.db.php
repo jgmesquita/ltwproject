@@ -450,8 +450,14 @@ function get_all_replies(PDO $dbh, int $idComment) : array
 
 function add_reply(PDO $dbh, int $idComment, string $username, string $text) : void 
 {
-  $stmt = $dbh->prepare('INSERT INTO reply VALUES (?, ?, ?)');
-  $stmt->execute(array($idComment, $username, $text));
+  $stmt = $dbh->prepare('SELECT MAX(id) AS max_id FROM comment');
+  $stmt->execute();
+  $row = $stmt->fetch(PDO::FETCH_ASSOC);
+  $id = $row['max_id'] ?? 0;
+  $id = $id + 1;
+
+  $stmt = $dbh->prepare('INSERT INTO reply VALUES (?, ?, ?, ?)');
+  $stmt->execute(array($id, $idComment, $username, $text));
 }
 
 function get_user(PDO $dbh, string $username) : User
