@@ -16,12 +16,14 @@
             <?php if (!is_sold($dbh, $item->id)) { ?>
             <article>
                 <h3><?=$item->category?></h3>
-                <img src="/images/path.png"><br>
-                <a href="/pages/item.php?id=<?=$item->id?>">Link</a>
-                <p id="descriptionItem">Description: <?=htmlspecialchars($item->descriptionItem)?></p>
-                <p id="model">Model: <?=htmlspecialchars($item->model)?></p>
-                <p id="brand">Brand: <?=htmlspecialchars($item->brand)?></p>
-                <p id="price">Price: <?=$item->price?>&#8364</p>
+                <img src="<?=$item->imagePath?>"><br>
+                <section id="description">
+                    <a href="/pages/item.php?id=<?=$item->id?>">Link</a>
+                    <p id="descriptionItem">Description: <?=htmlspecialchars($item->descriptionItem)?></p>
+                    <p id="model">Model: <?=htmlspecialchars($item->model)?></p>
+                    <p id="brand">Brand: <?=htmlspecialchars($item->brand)?></p>
+                    <p id="price">Price: <?=$item->price?>&#8364</p>
+                </section>
             </article>
             <?php } ?>
         <?php } ?>
@@ -271,7 +273,6 @@
             <th>Brand</th>
             <th>Model</th>
             <th>Condition</th>
-            <th>Status</th>
         </tr>
       </thead>
       <tbody>

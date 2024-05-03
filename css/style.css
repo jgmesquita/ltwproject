@@ -1,5 +1,168 @@
 body {
+    display: grid;
+    width: 60em;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: "header header" "main aside" "footer footer";
+    font-size: medium;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+body > header {
+    background-color: rgb(148, 205, 119);
+    color: white;
+    grid-area: header;
+    padding: 1em;
     text-align: center;
+    margin-top: 0;
+}
+
+header form {
+    width: 30em;
+    display: flex;
+    flex-direction: row;
+}
+
+form a {
+    align-self:center;
+}
+
+body > footer {
+    grid-area: footer;
+    background-color: rgb(148, 205, 119);
+    padding: 1em;
+    color: white;
+
+}
+
+body > main {
+    text-align: center;
+    width: 45em;
+    grid-area: main;
+    padding: 1em;
+    background-color: blanchedalmond;
+}
+
+body > aside {
+    width: 15em;
+    grid-area: aside;
+    background-color: rgb(219, 160, 51);
+    padding: 1em;
+    color: white;
+}
+
+article {
+    background-color: rgb(157, 157, 235);
+    margin: 2em;
+    color: white;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+article > img {
+    max-width: 50%;
+    max-height: 50%;
+    margin: 1em;
+    border-radius: 1em;
+}
+
+article > h3 {
+    background-color: rgb(107, 107, 236);
+    border-radius: 1em;
+    padding: 1em;
+}
+
+article > section#description {
+    background-color: rgb(214, 121, 121);
+    border-radius: 1em;
+    padding: 1em;
+}
+
+section#register {
+    background-color: rgb(229, 136, 105);
+    border-radius: 4px;
+    color: white;
+    padding: 1em;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form > h4 {
+    align-self: self-start;
+    color: white;
+    background-color: rgb(229, 136, 105);
+    padding: 0.5em;
+    border-radius: 4px;
+    width: 10em;
+}
+
+form h2 {
+    background-color: powderblue;
+}
+
+input {
+    width: 100%; 
+    padding: 8px 15px; 
+    margin: 8px 0; 
+    box-sizing: border-box; 
+    border: 2px solid #ccc; 
+    border-radius: 4px; 
+    background-color: white; 
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s; 
+}
+  
+input:focus {
+    border-color: #4CAF50; 
+    box-shadow: 0 0 8px 0 rgba(76, 175, 80, 0.4); 
+    outline: none; 
+}
+  
+input:hover {
+    border-color: #888; 
+}
+
+button {
+    background-color: #ed7a7a; 
+    border: none; 
+    color: white;
+    padding: 12px 24px; 
+    text-align: center; 
+    text-decoration: none;
+    display: inline-block; 
+    font-size: 16px; 
+    margin: 4px 2px; 
+    cursor: pointer; 
+    border-radius: 5px; 
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+  
+button:hover {
+    background-color: #f55050; 
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); 
+    transform: translateY(-2px); 
+}
+  
+button:active {
+    transform: translateY(1px);
+}
+  
+button:focus {
+    outline: none; 
+    box-shadow: 0 0 8px 2px rgba(255,255,255,0.6); 
+}
+
+form section {
+    background-color: #ed7a7a;
+    color: white;
 }
 
 table {

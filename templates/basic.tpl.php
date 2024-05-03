@@ -20,32 +20,16 @@
   </head>
   <body>
     <header>
-      <h1><a href="/">Amazon LTW Shop</a></h1>
+      <h1><a href="/">ReTreasure</a></h1>
       <h2>Rediscover Treasures: Where Pre-Loved Finds New Love!</h2>
       <?php 
         if ($session->isLoggedIn()) drawLogoutForm($session);
         else drawLoginForm();
       ?>
     </header>
-
-    <!--<div>
-      <h4>Select by Category</h4>
-      <ul>
-        <?php
-          /*$categories = get_all_categories($dbh);
-          foreach($categories as $category){
-            $parts = explode('-', $category);
-            ?>
-            <li>
-            <a href="items_by_category.php?category=<?=($category) ?>">
-              <?= $parts[1] ?>
-              </a>
-            </li>
-          <?php } */?>    
-      </ul>
-
-    </div>-->
-
+    <aside>At ReTreasure, we believe that every item has a story and a journey, and it shouldn't end just because it's no longer brand new. 
+      Our platform is the premier online destination for buying and selling high-quality, pre-loved items, ranging from fashion and furniture to electronics and toys.
+    </aside>
     <main>
 <?php } ?>
 
@@ -61,9 +45,12 @@
   </head>
   <body>
     <header>
-      <h1><a href="/">Amazon LTW Shop</a></h1>
+      <h1><a href="/">ReTreasure</a></h1>
       <h2>Rediscover Treasures: Where Pre-Loved Finds New Love!</h2>
     </header>
+    <aside>At ReTreasure, we believe that every item has a story and a journey, and it shouldn't end just because it's no longer brand new. 
+      Our platform is the premier online destination for buying and selling high-quality, pre-loved items, ranging from fashion and furniture to electronics and toys.
+    </aside>
     <main>
 <?php } ?>
 
@@ -71,7 +58,7 @@
 <?php function drawFooter() { ?>
     </main>
     <footer>
-      Amazon LTW Shop &copy; 2024
+      ReTreasure &copy; 2024
     </footer>
   </body>
 </html>
@@ -88,16 +75,30 @@
 <?php } ?>
 
 <?php function drawRegisterForm() { ?>
+  <section id="register">
+  <h2>Register</h2>
+  <h3>Fill out the following form to participate in our shop!</h3>
+  </section>
   <form action="/actions/action_register.php" method="post" class="register">
+    <h4>Username:</h4>
     <input type="username" name="username" placeholder="username" required>
+    <h4>Password:</h4>
     <input type="password" name="password" placeholder="password" required>
+    <h4>First Name:</h4>
     <input type="text" name="firstName" placeholder="firstName" required>
+    <h4>Last Name:</h4>
     <input type="text" name="lastName" placeholder="lastName" required>
+    <h4>Address:</h4>
     <input type="text" name="address_" placeholder="address_" required>
+    <h4>City:</h4>
     <input type="text" name="city" placeholder="city" required>
+    <h4>Country:</h4>
     <input type="text" name="country" placeholder="country" required>
+    <h4>Postal-Code:</h4>
     <input type="text" name="postalCode" placeholder="postalCode" required>
+    <h4>E-mail:</h4>
     <input type="text" name="email" placeholder="email" required>
+    <h4>Phone:</h4>
     <input type="text" name="phone" placeholder="phone" required>
     <button type="submit">Register</button>
   </form>

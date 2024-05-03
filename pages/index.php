@@ -16,7 +16,7 @@
 
   $items = Item::getItems($dbh, 5);
 
-  drawHeader($session, 'Amazon LTW Shop', $dbh);
+  drawHeader($session, 'ReTreasure', $dbh);
   drawItems($dbh, $items);
   drawFooter();
   

@@ -31,7 +31,7 @@
     }
 
     public static function getItems(PDO $db, int $count): array {
-        $query = "SELECT * FROM items ORDER BY id DESC LIMIT 10";
+        $query = "SELECT * FROM items ORDER BY id DESC LIMIT 5";
         $statement = $db->prepare($query);
         $statement->execute();
 

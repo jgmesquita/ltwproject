@@ -21,6 +21,10 @@ if (search) {
       ownerUser.innerText = item.ownerUser
       row.appendChild(ownerUser)
 
+      const category = document.createElement('td')
+      category.innerText = item.category
+      row.appendChild(category)
+
       const descriptionItem = document.createElement('td')
       descriptionItem.innerText = item.descriptionItem
       row.appendChild(descriptionItem)
@@ -28,6 +32,10 @@ if (search) {
       const sizeItem = document.createElement('td')
       sizeItem.innerText = item.sizeItem
       row.appendChild(sizeItem)
+
+      const color = document.createElement('td')
+      color.innerText = item.color
+      row.appendChild(color)
 
       const price = document.createElement('td')
       price.innerText = item.price
@@ -43,7 +51,7 @@ if (search) {
 
       const condition = document.createElement('td')
       condition.innerText = item.condition
-      row.appendChild(price)
+      row.appendChild(condition)
     }
   })
 }
