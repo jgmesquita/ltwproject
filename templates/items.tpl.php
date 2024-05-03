@@ -101,6 +101,7 @@
 
 <?php function drawListItems(PDO $dbh, array $items) { ?>
     <section id="items">
+        <h3>There is the listed you requested!</h3>
         <table>
             <tr>
                 <th>ID</th>
@@ -140,6 +141,7 @@
 
 <?php function drawListedItems(PDO $dbh, array $items) { ?>
     <section id="items">
+        <h3>There is the listed you requested!</h3>
         <table>
             <tr>
                 <th>ID</th>

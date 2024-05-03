@@ -65,6 +65,12 @@ header form section a:focus {
     box-shadow: 0 0 8px 2px rgba(255,255,255,0.6); 
 }
 
+#items h3 {
+    background-color: #e4ae40;
+    border-radius: 1em;
+    color: white;
+    padding: 1em;
+}
 
 form a {
     align-self:center;
@@ -449,5 +455,30 @@ aside::first-letter {
 #profile span a:focus {
     outline: none; 
     box-shadow: 0 0 8px 2px rgba(255,255,255,0.6); 
+}
+
+#change {
+    background-color: rgb(157, 157, 235);
+    border-radius: 1em;
+}
+
+#change h4 {
+    margin-top: 1em;
+    margin-left: 20em;
+    width: 20em;
+}
+
+#change a {
+    background-color: #ed7a7a;
+    margin: 1em;
+    padding: 1em;
+    color: white;
+    border-radius: 4px;
+}
+
+#change a:hover {
+    background-color: #f55050; 
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); 
+    transform: translateY(-2px); 
 }
 

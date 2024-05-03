@@ -123,40 +123,48 @@
 <?php } ?>
 
 <?php function drawChangeUsername() { ?>
-  <form action="/actions/action_change_username.php" method="post" class="change_username">
-    <h4>Write the new username!</h4>
-    <input type=text name="username" placeholder="new username" required>
-    <button type="submit">Change Username</button>
-  </form>
-  <a href="/pages/profile.php">Back</a>
+  <section id="change">
+    <form action="/actions/action_change_username.php" method="post" class="change_username">
+      <h4>Write the new username!</h4>
+      <input type=text name="username" placeholder="new username" required>
+      <button type="submit">Change Username</button>
+    </form>
+    <a href="/pages/profile.php">Back</a>
+  </section>
 <?php } ?>
 
 <?php function drawChangeName() { ?>
-  <form action="/actions/action_change_name.php" method="post" class="change_name">
-    <h4>Write the new name!</h4>
-    <input type=text name="firstName" placeholder="new firstName" required>
-    <input type=text name="lastName" placeholder="new lastName" required>
-    <button type="submit">Change Name</button>
-  </form>
-  <a href="/pages/profile.php">Back</a>
+  <section id="change">
+    <form action="/actions/action_change_name.php" method="post" class="change_name">
+      <h4>Write the new name!</h4>
+      <input type=text name="firstName" placeholder="new firstName" required>
+      <input type=text name="lastName" placeholder="new lastName" required>
+      <button type="submit">Change Name</button>
+    </form>
+    <a href="/pages/profile.php">Back</a>
+  </section>
 <?php } ?>
 
 <?php function drawChangeEmail() { ?>
-  <form action="/actions/action_change_email.php" method="post" class="change_name">
-    <h4>Write the new email!</h4>
-    <input type=text name="email" placeholder="new email" required>
-    <button type="submit">Change Email</button>
-  </form>
-  <a href="/pages/profile.php">Back</a>
+  <section id="change">
+    <form action="/actions/action_change_email.php" method="post" class="change_name">
+      <h4>Write the new email!</h4>
+      <input type=text name="email" placeholder="new email" required>
+      <button type="submit">Change Email</button>
+    </form>
+    <a href="/pages/profile.php">Back</a>
+  </section>
 <?php } ?>
 
 <?php function drawChangePassword() { ?>
-  <form action="/actions/action_change_password.php" method="post" class="change_name">
-    <h4>Write the new password!</h4>
-    <input type=text name="password" placeholder="new password" required>
-    <button type="submit">Change Password</button>
-  </form>
-  <a href="/pages/profile.php">Back</a>
+  <section id="change">
+    <form action="/actions/action_change_password.php" method="post" class="change_name">
+      <h4>Write the new password!</h4>
+      <input type=text name="password" placeholder="new password" required>
+      <button type="submit">Change Password</button>
+    </form>
+    <a href="/pages/profile.php">Back</a>
+  </section>
 <?php } ?>
 
 <?php function drawOptionsProfile() { ?>
@@ -169,10 +177,6 @@
     <a href="/pages/profile.php">Back</a>
   </section>
 <?php } ?>
-
-
-
-
 <?php function drawItemsByCategory(PDO $dbh, string $category, string $title) { ?>
 <!DOCTYPE html>
 <html lang = "en-US">
