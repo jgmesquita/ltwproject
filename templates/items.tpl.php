@@ -101,7 +101,7 @@
 
 <?php function drawListItems(PDO $dbh, array $items) { ?>
     <section id="items">
-        <h3>There is the listed you requested!</h3>
+        <h3>There is the list you requested!</h3>
         <table>
             <tr>
                 <th>ID</th>
@@ -135,13 +135,13 @@
             </tr>            
         <?php } ?>
         </table>
+        <a href="/pages/profile.php">Back</a>
     </section>
-    <a href="/pages/profile.php">Back</a>
 <?php } ?>
 
 <?php function drawListedItems(PDO $dbh, array $items) { ?>
     <section id="items">
-        <h3>There is the listed you requested!</h3>
+        <h3>There is the list you requested!</h3>
         <table>
             <tr>
                 <th>ID</th>
@@ -186,8 +186,8 @@
             </tr>            
         <?php } ?>
         </table>
+        <a href="/pages/profile.php">Back</a>
     </section>
-    <a href="/pages/profile.php">Back</a>
 <?php } ?>
 
 <?php function drawRegisterItemForm(PDO $dbh) { ?>

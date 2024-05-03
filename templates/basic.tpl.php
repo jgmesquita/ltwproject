@@ -126,7 +126,7 @@
   <section id="change">
     <form action="/actions/action_change_username.php" method="post" class="change_username">
       <h4>Write the new username!</h4>
-      <input type=text name="username" placeholder="new username" required>
+      <input type=text name="username" placeholder="New Username" required>
       <button type="submit">Change Username</button>
     </form>
     <a href="/pages/profile.php">Back</a>
@@ -199,6 +199,7 @@
 <?php } ?>
 
 <?php function drawError(int $error) { ?>
+  <section id="error">
   <?php switch ($error) { 
     case 1: ?> <p>The password must have at least 8 characters, one of which must be a number!</p> <?php break;
     case 2: ?> <p>The username is already being used! Try another one!</p> <?php break;
@@ -207,4 +208,5 @@
     case 5: ?> <p>There was an error! Please try again!</p> <?php break;
     case 6: ?> <p>The username/password is incorrect!</p> <?php break;
   } ?>
+  </section>
 <?php } ?>
