@@ -92,6 +92,7 @@ body > aside {
     background-color: rgb(219, 160, 51);
     padding: 1em;
     color: white;
+    font-size: 1em;
 }
 
 article {
@@ -128,25 +129,67 @@ section#register {
     padding: 1em;
 }
 
-form {
+article#hamburger {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    margin-left: 18em;
 }
 
-form > h4 {
+#links {
+    display: flexbox;
+    flex-direction: row;
+    margin-left: 25em;
+    background-color: rgb(148, 205, 119);
+    margin: 0em;
+}
+
+#links a, #links button {
+    width: 15em;
+    height: 2em;
+    align-self: center;
+}
+
+#hamburger {
+    background-color: rgb(148, 205, 119);
+}
+
+#hamburger input {
+  display: flex;
+}
+
+#hamburger label {
+    max-width: 7em;
+    max-height: 2em;
+    background-color:rgb(219, 160, 51);
+    border-radius: 1em;
+    padding: 1em;
+    align-self: center;
+}
+
+#burger:checked #links a,
+#burger:checked #links button,
+#burger:checked #links {
+    display: flex;
+    flex-direction: row;
+    margin-left: 25em;
+}
+
+
+form h4 {
     align-self: self-start;
     color: white;
     background-color: rgb(229, 136, 105);
     padding: 0.5em;
     border-radius: 4px;
     width: 10em;
+    margin: 0 auto;
 }
 
 form h2 {
     background-color: powderblue;
 }
 
-input {
+input, select{
     width: 100%; 
     padding: 8px 15px; 
     margin: 8px 0; 
@@ -158,13 +201,13 @@ input {
     transition: border-color 0.3s, box-shadow 0.3s; 
 }
   
-input:focus {
+input:focus, select:focus {
     border-color: #4CAF50; 
     box-shadow: 0 0 8px 0 rgba(76, 175, 80, 0.4); 
     outline: none; 
 }
   
-input:hover {
+input:hover, select:hover {
     border-color: #888; 
 }
 
@@ -309,3 +352,102 @@ table {
     margin: 1em;
     color: white;
 }
+
+#options {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(157, 157, 235);
+    border-radius: 1em;
+}
+
+#options h3 {
+    background-color: rgb(148, 205, 119);
+    color: white;
+    padding: 1em;
+    margin: 1em;
+    border-radius: 1em;
+
+}
+
+#options a {
+    background-color: #ed7a7a;
+    margin: 1em;
+    padding: 1em;
+    color: white;
+    border-radius: 1em;
+}
+
+#options a:hover {
+    background-color: #f55050; 
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); 
+    transform: translateY(-2px); 
+}
+  
+#options a:active {
+    transform: translateY(1px);
+}
+  
+#options a:focus {
+    outline: none; 
+    box-shadow: 0 0 8px 2px rgba(255,255,255,0.6); 
+}
+
+aside::first-letter {
+    font-size: x-large;
+}
+
+#profile {
+    background-color: rgb(157, 157, 235);
+    padding: 1em;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+#profile h3 {
+    background-color: #ed7a7a;
+    padding: 1em;
+    border-radius: 1em;
+    color: white;
+}
+
+#profile span {
+    width: 20em;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1em;
+    margin: 1em;
+    padding: 1em;
+    margin-left: 18em;
+}
+
+#profile span h4 {
+    background-color: #ed7a7a;
+    padding: 1em;
+    color: white;
+    border-radius: 1em;
+}
+
+#profile span a {
+    background-color: rgb(148, 205, 119);
+    padding: 1em;
+    color: white;
+    margin: 1em;
+    border-radius: 1em;
+}
+
+#profile span a:hover {
+    background-color: #4CAF50;
+}
+
+#profile span a:active {
+    transform: translateY(1px);
+}
+  
+#profile span a:focus {
+    outline: none; 
+    box-shadow: 0 0 8px 2px rgba(255,255,255,0.6); 
+}
+

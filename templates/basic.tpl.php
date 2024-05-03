@@ -27,8 +27,7 @@
         else drawLoginForm();
       ?>
     </header>
-    <aside>At ReTreasure, we believe that every item has a story and a journey, and it shouldn't end just because it's no longer brand new. 
-      Our platform is the premier online destination for buying and selling high-quality, pre-loved items, ranging from fashion and furniture to electronics and toys.
+    <aside>At ReTreasure, we believe that every item has a story and a journey, and it shouldn't end just because it's no longer brand new. Our platform is the premier online destination for buying and selling high-quality, pre-loved items, ranging from fashion and furniture to electronics and toys. Come checkout our amazings sellers! You can join us in our mission to create a better world!
     </aside>
     <main>
 <?php } ?>
@@ -48,8 +47,7 @@
       <h1><a href="/">ReTreasure</a></h1>
       <h2>Rediscover Treasures: Where Pre-Loved Finds New Love!</h2>
     </header>
-    <aside>At ReTreasure, we believe that every item has a story and a journey, and it shouldn't end just because it's no longer brand new. 
-      Our platform is the premier online destination for buying and selling high-quality, pre-loved items, ranging from fashion and furniture to electronics and toys.
+    <aside>At ReTreasure, we believe that every item has a story and a journey, and it shouldn't end just because it's no longer brand new. Our platform is the premier online destination for buying and selling high-quality, pre-loved items, ranging from fashion and furniture to electronics and toys. Come checkout our amazings sellers! You can join us in our mission to create a better world!
     </aside>
     <main>
 <?php } ?>
@@ -110,20 +108,23 @@
 
 <?php function drawLogoutForm(Session $session) { ?>
   <form action="/actions/action_logout.php" method="post" class="logout">
-    <section id="logout">
-      <a href="/pages/profile.php"><?="Welcome, " . htmlentities($session->getId()) . "!"?></a>
-      <button type="submit">Logout</button>
-    </section>
-    <section id="links">
-      <a href="/pages/search.php">Search</a>
-      <a href="/pages/register_item.php">Register Item</a>
-      <a href="/pages/checkout.php">Checkout</a>
-    </section>
+    <article id="hamburger">
+      <label class="burger" for="burger">&#8801;</label>
+      <input type="checkbox" id="burger">
+        <section id="links">
+          <a href="/pages/profile.php"><?="Welcome, " . htmlentities($session->getId()) . "!"?></a>
+          <a href="/pages/search.php">Search</a>
+          <a href="/pages/register_item.php">Register Item</a>
+          <a href="/pages/checkout.php">Checkout</a>
+          <button type="submit">Logout</button>
+        </section>
+    </article>
   </form>
 <?php } ?>
 
 <?php function drawChangeUsername() { ?>
   <form action="/actions/action_change_username.php" method="post" class="change_username">
+    <h4>Write the new username!</h4>
     <input type=text name="username" placeholder="new username" required>
     <button type="submit">Change Username</button>
   </form>
@@ -132,6 +133,7 @@
 
 <?php function drawChangeName() { ?>
   <form action="/actions/action_change_name.php" method="post" class="change_name">
+    <h4>Write the new name!</h4>
     <input type=text name="firstName" placeholder="new firstName" required>
     <input type=text name="lastName" placeholder="new lastName" required>
     <button type="submit">Change Name</button>
@@ -141,6 +143,7 @@
 
 <?php function drawChangeEmail() { ?>
   <form action="/actions/action_change_email.php" method="post" class="change_name">
+    <h4>Write the new email!</h4>
     <input type=text name="email" placeholder="new email" required>
     <button type="submit">Change Email</button>
   </form>
@@ -149,6 +152,7 @@
 
 <?php function drawChangePassword() { ?>
   <form action="/actions/action_change_password.php" method="post" class="change_name">
+    <h4>Write the new password!</h4>
     <input type=text name="password" placeholder="new password" required>
     <button type="submit">Change Password</button>
   </form>
@@ -156,12 +160,14 @@
 <?php } ?>
 
 <?php function drawOptionsProfile() { ?>
-  <h3>Select which detail you wanna change!</h3>
-  <a href="/pages/change_username.php">Change your username!</a>
-  <a href="/pages/change_name.php">Change your name!</a>
-  <a href="/pages/change_email.php">Change your email!</a>
-  <a href="/pages/change_password.php">Change your password!</a>
-  <a href="/pages/profile.php">Back</a>
+  <section id="options">
+    <h3>Select which detail you wanna change!</h3>
+    <a href="/pages/change_username.php">Change your username!</a>
+    <a href="/pages/change_name.php">Change your name!</a>
+    <a href="/pages/change_email.php">Change your email!</a>
+    <a href="/pages/change_password.php">Change your password!</a>
+    <a href="/pages/profile.php">Back</a>
+  </section>
 <?php } ?>
 
 

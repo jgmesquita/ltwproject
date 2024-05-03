@@ -190,38 +190,38 @@
 
 <?php function drawRegisterItemForm(PDO $dbh) { ?>
     <form action="/actions/action_register_item.php" method="post" class="register_item" enctype="multipart/form-data">
-        <label for="descriptionItem">Write a description:</label>
+        <h4>Write a description:</h4>
         <input type="text" name="descriptionItem" placeholder="description" required>
-        <label for="category">Choose a category:</label>
+        <h4>Choose a category:</h4>
         <select name="category" id="category">
             <?php $categories = get_all_categories($dbh);
             foreach ($categories as $category) { ?>
                 <option value="<?=$category?>"><?=$category?></option>
             <?php } ?> 
         </select>
-        <label for="color">Color:</label>
+        <h4>Color:</h4>
         <input type="text" name="color" placeholder="color" required>
-        <label for="sizeItem">Choose a size:</label>
+        <h4>Choose a size:</h4>
         <select name="sizeItem" id="sizeItem">
             <?php $sizes = get_all_sizes($dbh);
             foreach ($sizes as $size) { ?>
                 <option value="<?=$size?>"><?=$size?></option>
             <?php } ?> 
         </select>
-        <label for="price">Price:</label>
+        <h4>Price:</h4>
         <input type="number" name="price" placeholder="price" required>
-        <label for="brand">Brand:</label>
+        <h4>Brand:</h4>
         <input type="text" name="brand" placeholder="brand" required>
-        <label for="model">Model:</label>
+        <h4>Model:</h4>
         <input type="text" name="model" placeholder="model" required>
-        <label for="condition">Choose a condition:</label>
+        <h4>Choose a condition:</h4>
         <select name="condition" id="condition">
             <?php $conditions = get_all_conditions($dbh);
             foreach ($conditions as $condition) { ?>
                 <option value="<?=$condition?>"><?=$condition?></option>
             <?php } ?> 
         </select>
-        <label for="image">Upload a picture:</label>
+        <h4>Upload a picture:</h4>
         <input type="file" name="image" placeholder="file" required>
         <button type="submit">Register Item</button>
     </form>
@@ -230,31 +230,31 @@
 <?php function drawUpdateItemForm(PDO $dbh, int $id) { ?>
     <form action="/actions/action_update_item.php" method="post" class="update_item">
         <input type="hidden" name="id" value = <?=$id?>>
-        <label for="descriptionItem">Write a description:</label>
+        <h4>Write a description:</h4>
         <input type="text" name="descriptionItem" placeholder="description" required>
-        <label for="category">Choose a category:</label>
+        <h4>Choose a category:</h4>
         <select name="category" id="category">
             <?php $categories = get_all_categories($dbh);
             foreach ($categories as $category) { ?>
                 <option value="<?=$category?>"><?=$category?></option>
             <?php } ?> 
         </select>
-        <label for="color">Color:</label>
+        <h4>Color:</h4>
         <input type="text" name="color" placeholder="color" required>
-        <label for="sizeItem">Choose a size:</label>
+        <h4>Choose a size:</h4>
         <select name="sizeItem" id="sizeItem">
             <?php $sizes = get_all_sizes($dbh);
             foreach ($sizes as $size) { ?>
                 <option value="<?=$size?>"><?=$size?></option>
             <?php } ?> 
         </select>
-        <label for="price">Price:</label>
+        <h4>Price:</h4>
         <input type="number" name="price" placeholder="price" required>
-        <label for="brand">Brand:</label>
+        <h4>Brand:</h4>
         <input type="text" name="brand" placeholder="brand" required>
-        <label for="model">Model:</label>
+        <h4>Model:</h4>
         <input type="text" name="model" placeholder="model" required>
-        <label for="condition">Choose a condition:</label>
+        <h4>Choose a condition:</h4>
         <select name="condition" id="condition">
             <?php $conditions = get_all_conditions($dbh);
             foreach ($conditions as $condition) { ?>

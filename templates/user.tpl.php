@@ -5,6 +5,7 @@
 ?>
 
 <?php function drawProfile() { ?>
+  <section id="profile">
     <h3>Welcome, <?=$_SESSION['username']?>!</h3>
     <span id="definition">
       <h4>Definitions</h4>
@@ -23,12 +24,15 @@
       <h4>As an admin</h4>
       <a href="/pages/admin.php">Management</a>
     </span>
+  </section>
 <?php } ?>
 
 <?php function drawAdminOptions() { ?>
-  <a href="/pages/elevate_admin.php">Elevate an user to admin</a>
-  <a href="/pages/add_entities.php">Introduce new entities</a>
-  <a href="/pages/all_items.php">Watch all items</a>
+  <section id="admin">
+    <a href="/pages/elevate_admin.php">Elevate an user to admin</a>
+    <a href="/pages/add_entities.php">Introduce new entities</a>
+    <a href="/pages/all_items.php">Watch all items</a>
+  </section>
 <?php } ?>
 
 <?php function drawElevateAdmin() { ?>
