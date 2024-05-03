@@ -6,6 +6,7 @@ body {
     grid-template-areas: "header header" "main aside" "footer footer";
     font-size: medium;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    align-self: center;
 }
 
 a {
@@ -23,10 +24,22 @@ body > header {
 }
 
 header form {
-    width: 30em;
     display: flex;
     flex-direction: row;
+    justify-self: center;
 }
+
+header form section {
+    width: 20em;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: rgb(87, 171, 227);
+    border-radius: 1em;
+    padding: 1em;
+    margin: 1em;
+}
+
 
 form a {
     align-self:center;

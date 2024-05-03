@@ -66,11 +66,15 @@
 
 <?php function drawLoginForm() { ?>
   <form action="/actions/action_login.php" method="post" class="login">
-    <input type="username" name="username" placeholder="username" required>
-    <input type="password" name="password" placeholder="password" required>
-    <button type="submit">Login</button>
-    <a href="/pages/register.php"> Register</a>
-    <a href="/pages/search.php"> Search</a>
+    <section>
+      <input type="username" name="username" placeholder="username" required>
+      <input type="password" name="password" placeholder="password" required>
+      <button type="submit">Login</button>
+    </section>
+    <section>
+      <a href="/pages/register.php"> Register</a>
+      <a href="/pages/search.php"> Search</a>
+    </section>
   </form>
 <?php } ?>
 
@@ -106,11 +110,15 @@
 
 <?php function drawLogoutForm(Session $session) { ?>
   <form action="/actions/action_logout.php" method="post" class="logout">
-    <a href="/pages/profile.php"><?=htmlentities($session->getId())?></a>
-    <button type="submit">Logout</button>
-    <a href="/pages/search.php">Search</a>
-    <a href="/pages/register_item.php">Register Item</a>
-    <a href="/pages/checkout.php">Checkout</a>
+    <section id="logout">
+      <a href="/pages/profile.php"><?="Welcome, " . htmlentities($session->getId()) . "!"?></a>
+      <button type="submit">Logout</button>
+    </section>
+    <section id="links">
+      <a href="/pages/search.php">Search</a>
+      <a href="/pages/register_item.php">Register Item</a>
+      <a href="/pages/checkout.php">Checkout</a>
+    </section>
   </form>
 <?php } ?>
 
