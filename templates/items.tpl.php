@@ -12,6 +12,7 @@
 
 <?php function drawItems(PDO $dbh, array $items) { ?>
     <section id="items">
+        <h3>Our latest items!</h3>
         <?php foreach ($items as $item) { ?>
             <?php if (!is_sold($dbh, $item->id)) { ?>
             <article>

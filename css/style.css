@@ -155,7 +155,7 @@ article#hamburger {
 }
 
 #links {
-    display: flexbox;
+    display: flex;
     flex-direction: row;
     margin-left: 25em;
     background-color: rgb(148, 205, 119);
@@ -166,6 +166,7 @@ article#hamburger {
     width: 15em;
     height: 2em;
     align-self: center;
+    display: none;
 }
 
 #hamburger {
@@ -173,7 +174,7 @@ article#hamburger {
 }
 
 #hamburger input {
-  display: flex;
+  display: none;
 }
 
 #hamburger label {
@@ -185,12 +186,15 @@ article#hamburger {
     align-self: center;
 }
 
-#burger:checked #links a,
-#burger:checked #links button,
-#burger:checked #links {
+#burger:checked ~ #links a,
+#burger:checked ~ #links button, 
+#burger:checked ~ #links{
     display: flex;
     flex-direction: row;
-    margin-left: 25em;
+    margin-left: 0em;
+    animation: reveal;
+    animation-range: entry 0% entry 150%;     
+    animation-timeline: view();
 }
 
 
@@ -510,4 +514,25 @@ aside::first-letter {
 
 #change {
     margin: 3em;
+}
+
+img {
+    animation: reveal;
+    animation-range: entry 0% entry 150%;     
+    animation-timeline: view();
+}
+
+@keyframes reveal {
+    0% {
+        opacity: 0%;
+        filter: brightness(3);
+        scale: 1.1;
+    }
+    150% {
+        opacity: 100%;
+    }
+}
+
+article:hover {
+    scale: 1.05;
 }
