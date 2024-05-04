@@ -63,11 +63,13 @@ Existem certas páginas que não queremos que sejam acessíveis a qualquer utili
 
 <img src="/images/11.png" width=40%>
 <img src="/images/12.png" width=40%>
+
 #### Injection Prevention
 Por vezes, quando um utilizador introduz algum tipo de contéudo, seja um comentário ou o registo de um artigo, podemos correr o risco de scripts serem injetados no nosso website, pondo em causa a nossa segurança. 
 Para previnir isso, o PHP dispõe de alguns métodos bastante úteis, como o htmlentities() e o htmlspecialchars(), convertendo carcteres críticos do HTML em códigos que não interferem no mesmo.
 
 <img src="/images/13.png" width=40%>
+
 #### SQL Injection
 Um ponto crucial é impedirmos a injeção de dados ou queries nocivas na nossa bade de dados que podem comprometer a nossa segurança. Desta forma, o PHP dispõe de uma classe de objetos PDO que permite tornar a ligação à base de dados mais segura.
 
