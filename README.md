@@ -23,46 +23,58 @@ O primeiro desafio diz respeito a criação do layout das páginas e estruturar 
 #### Head
 Para respeitarmos as regras do HTML, é importante definirmos bem a head de todas as páginas, atribuindo os parâmetros imprescendíveis. 
 É importante utilizarmos a tag META e o charset "UTF-8" para providenciarmos compatibilidade com todos caracteres. Além disso, é importante atribuirmos a ligação correta com os ficheiros CSS e JavaScript.
-<img src="/images/1.png">
+
+<img src="/images/1.png" width=40%>
 
 #### Form
 Quando é necessário fazer a ligação entre a interação website-utilizador, um dos métodos mais eficazes é definirmos a action, escrita em PHP, e associarmos a mesma ao FORM.
-<img src="/images/2.png">
+
+<img src="/images/2.png" width=40%>
 
 ### CSS
 O desafio seguinte é definirmos a parte visual de cada página, criando um ficheiro CSS. É importante definirmos um design uniforme e acessível. No meu design, utilizei diversas propriedades, como o grid, flex e também o uso de @keyframe.
-<img src="/images/3.png">
-<img src="/images/4.png">
-<img src="/images/6.png">
+
+<img src="/images/3.png" width=40%>
+<img src="/images/4.png" width=40%>
+<img src="/images/6.png" width=40%>
 
 ### PHP
 O desafio mais longo foi, sem dúvida, criar o HTML a partir de templates e fazer a ligação entre o website e o servidor, nomeadamente com a base de dados. Além disso, o PHP foi essencial para o uso de API's externas, como a conversão de moedas.
-<img src="/images/5.png">
+
+<img src="/images/5.png" width=40%>
 
 ### JavaScript
 Uma das partes mais interessantes deste projeto foi criar uma search bar dinâmica e interativa e, também, atualizar contéudas da página sem ser necessário fazer refresh.
-<img src="/images/7.png">
-<img src="/images/8.png">
+
+<img src="/images/7.png" width=40%>
+<img src="/images/8.png" width=40%>
 
 ### Segurança
 Estando o nosso website quase pronto, é essencial revermos alguns aspetos que podem compremeter a nossa segurança. 
 
 #### Password Storage
 Neste ponto, é crucial optarmos por estratégias que tornam as palavras-passe mais seguras. O PHP dispõe de dois métodos, como o password_hash() e password_verify(), que facilitam este procedimento.
-<img src="/images/9.png">
-<img src="/images/10.png">
+
+<img src="/images/9.png" width=40%>
+<img src="/images/10.png" width=40%>
+
 #### Invalidação do Access
 Existem certas páginas que não queremos que sejam acessíveis a qualquer utilizador, nomeadamente a manutenção por parte dos administradores e também a interação com a nossa loja online por utilizadores não registados.
-<img src="/images/11.png">
-<img src="/images/12.png">
+
+<img src="/images/11.png" width=40%>
+<img src="/images/12.png" width=40%>
+
 #### Injection Prevention
 Por vezes, quando um utilizador introduz algum tipo de contéudo, seja um comentário ou o registo de um artigo, podemos correr o risco de scripts serem injetados no nosso website, pondo em causa a nossa segurança. 
-Para previnir isso, o PHP dispõe de alguns métodos bastante úteis, como o htmlentities() e o htmlspecialchars(), convertendo carcteres críticos do HTML em códigos que não interferem no mesmo.
-<img src="/images/13.png">
+Para previnir isso, o PHP dispõe de alguns métodos bastante úteis, como o htmlentities() e o htmlspecialchars(), convertendo caracteres críticos do HTML em códigos que não interferem no mesmo.
+
+<img src="/images/13.png" width=40%>
+
 #### SQL Injection
-Um ponto crucial é impedirmos a injeção de dados ou queries nocivas na nossa bade de dados que podem comprometer a nossa segurança. Desta forma, o PHP dispõe de uma classe de objetos PDO que permite tornar a ligação à base de dados mais segura.
-<img src="/images/14.png">
-<img src="/images/15.png">
+Um ponto crucial é impedirmos a injeção de dados ou queries nocivas na nossa base de dados que podem comprometer a nossa segurança. Desta forma, o PHP dispõe de uma classe de objetos PDO que permite tornar a ligação à base de dados mais segura.
+
+<img src="/images/14.png" width=40%>
+<img src="/images/15.png" width=40%>
 
 ### Noções Gerais
 Este foi um dos projetos onde adquiri diversas competências durante a sua realização. Foi possível explorar novos conceitos, indo para além das competências da unidade curricular, e, essencialmente, foi possível consolidar as competências adquiridas.
