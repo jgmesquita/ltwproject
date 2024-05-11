@@ -450,7 +450,7 @@ function get_all_replies(PDO $dbh, int $idComment) : array
 
 function add_reply(PDO $dbh, int $idComment, string $username, string $text) : void 
 {
-  $stmt = $dbh->prepare('SELECT MAX(id) AS max_id FROM comment');
+  $stmt = $dbh->prepare('SELECT MAX(id) AS max_id FROM reply');
   $stmt->execute();
   $row = $stmt->fetch(PDO::FETCH_ASSOC);
   $id = $row['max_id'] ?? 0;
